@@ -216,7 +216,7 @@ const Hero = () => (
       <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
         <img
           src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=1974&auto=format&fit=crop"
-          alt="Mulher treinando"
+          alt="Mulher treinando força muscular focada em alta performance com o método adaptado Artemis Fit"
           className="w-full h-full object-cover opacity-60"
           referrerPolicy="no-referrer"
         />
@@ -798,7 +798,8 @@ const VisualProof = () => (
             <div className="w-full mx-auto mb-8 transition-transform duration-700 group-hover:scale-[1.03]">
               <img
                 src={item.img}
-                alt={item.title}
+                alt={`Captura detalhada do módulo ${item.title} no aplicativo Artemis Fit - Treino inteligente com inteligência artificial para mulheres`}
+                loading="lazy"
                 className="w-full aspect-[9/19] object-cover object-top drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] rounded-[2.2rem] border border-white/10"
                 referrerPolicy="no-referrer"
               />
