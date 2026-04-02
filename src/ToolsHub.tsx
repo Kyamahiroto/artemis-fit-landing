@@ -12,7 +12,6 @@ export const ToolsHub = () => {
             title: "Calculadora de Ciclo + Treino",
             desc: "Descubra sua fase hormonal atual e como ela impacta sua força, recuperação e desempenho muscular hoje.",
             icon: <Sparkles size={24} />,
-            image: "/guides/principal-ciclo.png",
             path: "/guia/ciclo-e-treino",
             priority: true,
             tag: "Mais Usada"
@@ -22,7 +21,6 @@ export const ToolsHub = () => {
             title: "Gerador de Treino Rápido",
             desc: "Monte um treino de hipertrofia em segundos com base no seu tempo, local e foco muscular.",
             icon: <Zap size={24} />,
-            image: "/guides/principal-treino.png",
             path: "/guia/gerador-de-treino",
             priority: false,
             tag: null
@@ -32,7 +30,6 @@ export const ToolsHub = () => {
             title: "Cotas de Proteína Inteligentes",
             desc: "Calcule sua distribuição ideal de proteína por refeição respeitando a janela anabólica feminina.",
             icon: <Target size={24} />,
-            image: "/guides/proteina-mulheres.png",
             path: "/guia/calculadora-proteina",
             priority: false,
             tag: null
@@ -42,7 +39,6 @@ export const ToolsHub = () => {
             title: "Artemis Readiness Test",
             desc: "Responda 5 perguntas e receba uma nota sobre seu potencial de evolução muscular e pontos fracos.",
             icon: <Activity size={24} />,
-            image: "/guides/overtraining-sinais.png",
             path: "/guia/diagnostico-treino",
             priority: false,
             tag: null
@@ -95,27 +91,21 @@ export const ToolsHub = () => {
                     <div className="grid md:grid-cols-2 gap-5">
                         {tools.map((tool, i) => (
                             <motion.div key={tool.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 * i }}>
-                                <Link to={tool.path} className={`block rounded-[1.5rem] border transition-all h-full group overflow-hidden ${tool.priority ? 'bg-primary/5 border-primary/30 hover:border-primary/60 hover:shadow-[0_0_30px_-5px_rgba(205,255,0,0.15)]' : 'bg-white/[0.03] border-white/10 hover:border-primary/30'}`}>
-                                    <div className="aspect-[21/9] overflow-hidden relative">
-                                        <img src={tool.image} alt={tool.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-60" />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent"></div>
-                                        <div className="absolute top-4 left-4">
-                                            <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${tool.priority ? 'bg-primary text-dark' : 'bg-white/10 text-white group-hover:bg-primary/20 group-hover:text-primary transition-all'}`}>
-                                                {tool.icon}
-                                            </div>
+                                <Link to={tool.path} className={`block p-7 rounded-[1.5rem] border transition-all h-full group ${tool.priority ? 'bg-primary/5 border-primary/30 hover:border-primary/60 hover:shadow-[0_0_30px_-5px_rgba(205,255,0,0.15)]' : 'bg-white/[0.03] border-white/10 hover:border-primary/30'}`}>
+                                    <div className="flex justify-between items-start mb-5">
+                                        <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${tool.priority ? 'bg-primary text-dark' : 'bg-white/10 text-white group-hover:bg-primary/20 group-hover:text-primary transition-all'}`}>
+                                            {tool.icon}
                                         </div>
                                         {tool.tag && (
-                                            <span className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider backdrop-blur-sm">
+                                            <span className="px-3 py-1 rounded-full bg-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider">
                                                 {tool.tag}
                                             </span>
                                         )}
                                     </div>
-                                    <div className="p-7">
-                                        <h3 className="text-xl font-bold mb-2">{tool.title}</h3>
-                                        <p className="text-white/50 text-sm leading-relaxed mb-5">{tool.desc}</p>
-                                        <div className="flex items-center gap-2 text-sm font-bold text-primary group-hover:translate-x-2 transition-transform duration-300">
-                                            Usar Agora <ChevronRight size={16} />
-                                        </div>
+                                    <h3 className="text-xl font-bold mb-2">{tool.title}</h3>
+                                    <p className="text-white/50 text-sm leading-relaxed mb-5">{tool.desc}</p>
+                                    <div className="flex items-center gap-2 text-sm font-bold text-primary group-hover:translate-x-2 transition-transform duration-300">
+                                        Usar Agora <ChevronRight size={16} />
                                     </div>
                                 </Link>
                             </motion.div>

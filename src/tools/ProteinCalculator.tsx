@@ -86,22 +86,6 @@ export const ProteinCalculator = () => {
                 description="Calcule suas cotas ideais de proteína por refeição considerando a fisiologia feminina e janela anabólica. Ferramenta gratuita."
             />
 
-            {/* Hero Image Section */}
-            <div className="relative h-[40vh] w-full overflow-hidden">
-                <img
-                    src="/guides/proteina-mulheres.png"
-                    alt="Calculadora de Proteína"
-                    className="w-full h-full object-cover opacity-50"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-dark via-dark/20 to-transparent"></div>
-                <div className="absolute inset-0 flex flex-col items-center justify-end pb-12 px-6 text-center">
-                    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl">
-                        <h1 className="text-4xl md:text-5xl font-bold font-display mb-4">Cotas de Proteína Inteligentes</h1>
-                        <p className="text-white/60 text-lg">Nutrição precisa baseada na fisiologia feminina.</p>
-                    </motion.div>
-                </div>
-            </div>
-
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between sticky top-0 z-40">
                 <Link to="/guia" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
                     <ArrowLeft size={16} /> Guia Artemis
