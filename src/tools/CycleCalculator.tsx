@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowLeft, Sparkles, Activity, AlertTriangle, Zap, Share2, ClipboardCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
 
 type Phase = 'Menstrual' | 'Folicular' | 'Ovulatória' | 'Lútea' | null;
 
@@ -76,9 +77,13 @@ export const CycleCalculator = () => {
 
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark">
+            <SEOHead
+                title="Calculadora de Ciclo Menstrual e Treino | Artemis Fit"
+                description="Descubra em que fase do ciclo você está e como isso afeta sua força, recuperação e desempenho no treino. Ferramenta gratuita."
+            />
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between">
-                <Link to="/ferramentas" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
-                    <ArrowLeft size={16} /> Hub de Ferramentas
+                <Link to="/guia" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
+                    <ArrowLeft size={16} /> Guia Artemis
                 </Link>
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary/60 border border-primary/20 px-3 py-1 rounded-full">
                     <Sparkles size={12} /> Beta

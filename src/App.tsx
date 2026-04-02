@@ -10,6 +10,7 @@ import { CycleCalculator } from './tools/CycleCalculator';
 import { WorkoutGenerator } from './tools/WorkoutGenerator';
 import { ProteinCalculator } from './tools/ProteinCalculator';
 import { TrainingDiagnostic } from './tools/TrainingDiagnostic';
+import { GuideTip } from './tools/GuideTip';
 
 // Helper to scroll to top on route change
 const ScrollToTop = () => {
@@ -33,12 +34,17 @@ function App() {
         <Route path="/cookies" element={<Cookies />} />
         <Route path="/tecnologia" element={<Technology />} />
 
-        {/* Tools Ecosystem */}
+        {/* Guia Artemis Ecosystem */}
+        <Route path="/guia" element={<ToolsHub />} />
+        <Route path="/guia/ciclo-e-treino" element={<CycleCalculator />} />
+        <Route path="/guia/gerador-de-treino" element={<WorkoutGenerator />} />
+        <Route path="/guia/calculadora-proteina" element={<ProteinCalculator />} />
+        <Route path="/guia/diagnostico-treino" element={<TrainingDiagnostic />} />
+        <Route path="/guia/dicas/:slug" element={<GuideTip />} />
+
+        {/* Legacy redirects */}
         <Route path="/ferramentas" element={<ToolsHub />} />
-        <Route path="/ferramentas/ciclo-e-treino" element={<CycleCalculator />} />
-        <Route path="/ferramentas/gerador-de-treino" element={<WorkoutGenerator />} />
-        <Route path="/ferramentas/calculadora-proteina" element={<ProteinCalculator />} />
-        <Route path="/ferramentas/diagnostico-treino" element={<TrainingDiagnostic />} />
+        <Route path="/ferramentas/*" element={<ToolsHub />} />
 
         {/* Fallback to home */}
         <Route path="*" element={<Landing />} />

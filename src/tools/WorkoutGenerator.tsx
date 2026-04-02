@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowLeft, Zap, Dumbbell, Clock, MapPin, Activity, CheckCircle2, ChevronRight, AlertTriangle } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
 
 type Local = 'Casa' | 'Academia';
 type Focus = 'Membros Inferiores' | 'Membros Superiores' | 'Full Body';
@@ -114,9 +115,13 @@ export const WorkoutGenerator = () => {
 
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark pb-32">
+            <SEOHead
+                title="Gerador de Treino Rápido para Mulheres | Artemis Fit"
+                description="Gere um treino de hipertrofia personalizado em segundos baseado no seu tempo e equipamento disponível. Ferramenta gratuita."
+            />
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between">
-                <Link to="/ferramentas" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
-                    <ArrowLeft size={16} /> Hub de Ferramentas
+                <Link to="/guia" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
+                    <ArrowLeft size={16} /> Guia Artemis
                 </Link>
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary/60 border border-primary/20 px-3 py-1 rounded-full">
                     <Zap size={12} /> Alta Conversão

@@ -115,7 +115,7 @@ const Navbar = () => {
       </div>
       <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/60">
         <a href="#features" className="hover:text-primary transition-colors">Tecnologia</a>
-        <a href="/ferramentas" className="hover:text-primary transition-colors flex items-center gap-1"><Sparkles size={14} /> Guia Artemis</a>
+        <a href="/guia" className="hover:text-primary transition-colors flex items-center gap-1"><Sparkles size={14} /> Guia Artemis</a>
         <a href="#ecosystem" className="hover:text-primary transition-colors">Ecossistema</a>
         <a href="#final" className="hover:text-primary transition-colors">Beta</a>
       </div>
@@ -836,7 +836,7 @@ const Footer = () => (
           <ul className="space-y-4 text-white/40 text-sm">
             <li><a href="/tecnologia" className="hover:text-primary transition-colors">Tecnologia</a></li>
             <li><a href="/artemis-score" className="hover:text-primary transition-colors">Artemis Score</a></li>
-            <li><a href="/ferramentas" className="hover:text-primary transition-colors text-primary flex items-center gap-2"><Sparkles size={14} className="text-primary" /> Guia Artemis</a></li>
+            <li><a href="/guia" className="hover:text-primary transition-colors text-primary flex items-center gap-2"><Sparkles size={14} className="text-primary" /> Guia Artemis</a></li>
           </ul>
         </div>
         <div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowLeft, Zap, Activity, AlertTriangle, ChevronRight, CheckCircle2, Brain, XCircle, Minus } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { SEOHead } from '../components/SEOHead';
 
 interface Question {
     id: string;
@@ -134,9 +135,13 @@ export const TrainingDiagnostic = () => {
 
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark pb-32">
+            <SEOHead
+                title="Teste de Potencial Muscular Feminino | Artemis Fit"
+                description="Faça o teste de 5 perguntas e descubra o que está limitando sua evolução muscular e como corrigir. Diagnóstico gratuito."
+            />
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between">
-                <Link to="/ferramentas" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
-                    <ArrowLeft size={16} /> Hub de Ferramentas
+                <Link to="/guia" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
+                    <ArrowLeft size={16} /> Guia Artemis
                 </Link>
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary/60 border border-primary/20 px-3 py-1 rounded-full">
                     <Brain size={12} /> Diagnóstico
