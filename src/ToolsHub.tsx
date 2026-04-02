@@ -19,7 +19,7 @@ export const ToolsHub = () => {
             title: "Gerador Rápido de Treino",
             desc: "Um treino de hipertrofia baseado no seu tempo livre e equipamento. (Inteligência Limitada)",
             icon: <Zap size={24} />,
-            status: "Em Breve",
+            status: "Disponível",
             path: "/ferramentas/gerador-de-treino",
             priority: false
         },
