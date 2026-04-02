@@ -28,7 +28,7 @@ export const ToolsHub = () => {
             title: "Cotas de Proteína Inteligentes",
             desc: "As calculadoras normais não servem para mulheres. Entenda como dividir sua proteína para otimizar massa magra.",
             icon: <Target size={24} />,
-            status: "Em Breve",
+            status: "Disponível",
             path: "/ferramentas/calculadora-proteina",
             priority: false
         },
@@ -37,7 +37,7 @@ export const ToolsHub = () => {
             title: "Artemis Readiness Test",
             desc: "Faça o teste de 5 minutos e receba uma nota científica sobre seu potencial de evolução muscular hoje.",
             icon: <Activity size={24} />,
-            status: "Em Breve",
+            status: "Disponível",
             path: "/ferramentas/diagnostico-treino",
             priority: false
         }

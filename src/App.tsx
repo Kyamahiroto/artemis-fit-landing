@@ -8,6 +8,8 @@ import { Technology } from './Technology';
 import { ToolsHub } from './ToolsHub';
 import { CycleCalculator } from './tools/CycleCalculator';
 import { WorkoutGenerator } from './tools/WorkoutGenerator';
+import { ProteinCalculator } from './tools/ProteinCalculator';
+import { TrainingDiagnostic } from './tools/TrainingDiagnostic';
 
 // Helper to scroll to top on route change
 const ScrollToTop = () => {
@@ -35,6 +37,8 @@ function App() {
         <Route path="/ferramentas" element={<ToolsHub />} />
         <Route path="/ferramentas/ciclo-e-treino" element={<CycleCalculator />} />
         <Route path="/ferramentas/gerador-de-treino" element={<WorkoutGenerator />} />
+        <Route path="/ferramentas/calculadora-proteina" element={<ProteinCalculator />} />
+        <Route path="/ferramentas/diagnostico-treino" element={<TrainingDiagnostic />} />
 
         {/* Fallback to home */}
         <Route path="*" element={<Landing />} />
