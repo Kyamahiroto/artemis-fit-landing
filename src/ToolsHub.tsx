@@ -124,12 +124,17 @@ export const ToolsHub = () => {
                     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {guideTips.map((tip, i) => (
                             <motion.div key={tip.slug} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.04 * i }}>
-                                <Link to={`/guia/dicas/${tip.slug}`} className="block p-5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/5 hover:border-primary/20 transition-all group h-full">
-                                    <h3 className="font-bold text-sm mb-2 group-hover:text-primary transition-colors leading-snug">{tip.title}</h3>
-                                    <p className="text-white/30 text-xs leading-relaxed mb-3 line-clamp-2">{tip.subtitle}</p>
-                                    <span className="text-primary text-xs font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                                        Ler <ChevronRight size={12} />
-                                    </span>
+                                <Link to={`/guia/dicas/${tip.slug}`} className="block rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/5 hover:border-primary/20 transition-all group h-full overflow-hidden">
+                                    <div className="aspect-[16/9] overflow-hidden">
+                                        <img src={tip.image} alt={tip.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                    </div>
+                                    <div className="p-5">
+                                        <h3 className="font-bold text-sm mb-2 group-hover:text-primary transition-colors leading-snug">{tip.title}</h3>
+                                        <p className="text-white/30 text-xs leading-relaxed mb-3 line-clamp-2">{tip.subtitle}</p>
+                                        <span className="text-primary text-xs font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                                            Ler <ChevronRight size={12} />
+                                        </span>
+                                    </div>
                                 </Link>
                             </motion.div>
                         ))}

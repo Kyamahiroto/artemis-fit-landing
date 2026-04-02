@@ -47,7 +47,17 @@ export const GuideTip = () => {
                     </div>
 
                     <h1 className="text-3xl md:text-5xl font-bold font-display mb-4 leading-tight">{tip.title}</h1>
-                    <p className="text-primary font-medium text-lg mb-10 italic">{tip.subtitle}</p>
+                    <p className="text-primary font-medium text-lg mb-8 italic">{tip.subtitle}</p>
+
+                    {/* Featured Image */}
+                    <div className="relative rounded-2xl overflow-hidden mb-10 aspect-[16/9]">
+                        <img
+                            src={tip.image}
+                            alt={tip.title}
+                            className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-dark via-transparent to-transparent opacity-60"></div>
+                    </div>
 
                     <div className="space-y-6 text-white/70 text-lg leading-relaxed">
                         {tip.paragraphs.map((p, i) => (
@@ -77,9 +87,12 @@ export const GuideTip = () => {
                         <h3 className="text-lg font-bold mb-6 text-white/50">Leia também</h3>
                         <div className="space-y-3">
                             {guideTips.filter(t => t.slug !== slug).slice(0, 3).map(t => (
-                                <Link key={t.slug} to={`/guia/dicas/${t.slug}`} className="block p-4 rounded-2xl border border-white/5 bg-white/5 hover:border-primary/30 transition-all group">
-                                    <div className="font-bold group-hover:text-primary transition-colors">{t.title}</div>
-                                    <div className="text-sm text-white/40 mt-1">{t.subtitle}</div>
+                                <Link key={t.slug} to={`/guia/dicas/${t.slug}`} className="flex items-center gap-4 p-4 rounded-2xl border border-white/5 bg-white/5 hover:border-primary/30 transition-all group">
+                                    <img src={t.image} alt={t.title} className="w-20 h-14 rounded-xl object-cover shrink-0" />
+                                    <div>
+                                        <div className="font-bold group-hover:text-primary transition-colors text-sm">{t.title}</div>
+                                        <div className="text-xs text-white/40 mt-1">{t.subtitle}</div>
+                                    </div>
                                 </Link>
                             ))}
                         </div>
