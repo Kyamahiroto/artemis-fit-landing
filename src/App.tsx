@@ -5,6 +5,8 @@ import { Privacy } from './Privacy';
 import { Terms } from './Terms';
 import { Cookies } from './Cookies';
 import { Technology } from './Technology';
+import { ToolsHub } from './ToolsHub';
+import { CycleCalculator } from './tools/CycleCalculator';
 
 // Helper to scroll to top on route change
 const ScrollToTop = () => {
@@ -27,6 +29,11 @@ function App() {
         <Route path="/termos" element={<Terms />} />
         <Route path="/cookies" element={<Cookies />} />
         <Route path="/tecnologia" element={<Technology />} />
+
+        {/* Tools Ecosystem */}
+        <Route path="/ferramentas" element={<ToolsHub />} />
+        <Route path="/ferramentas/ciclo-e-treino" element={<CycleCalculator />} />
+
         {/* Fallback to home */}
         <Route path="*" element={<Landing />} />
       </Routes>
