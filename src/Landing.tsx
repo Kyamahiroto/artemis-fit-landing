@@ -17,8 +17,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 
 const SectionCTA = ({ text = "Acessar o App", href = "https://app.artemisfit.online" }: { text?: string; href?: string }) => (
-  <div className="flex justify-center mt-12 mb-16 px-6">
-    <a href={href} className="w-full sm:w-auto px-10 py-5 bg-white text-dark rounded-full font-bold text-xl hover:bg-primary transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-primary/20 flex items-center justify-center gap-3">
+  <div className="flex justify-center mt-12 mb-16 px-4 md:px-6">
+    <a href={href} className="w-full sm:w-auto px-8 md:px-10 py-4 md:py-5 bg-white text-dark rounded-full font-bold text-lg md:text-xl hover:bg-primary transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-primary/20 flex items-center justify-center gap-3">
       <Zap size={24} /> {text} <ChevronRight size={20} />
     </a>
   </div>
@@ -109,9 +109,9 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 transition-all duration-300 ${scrolled ? 'py-3 bg-dark/95 backdrop-blur-lg border-b border-white/10' : 'py-6 bg-dark/80 backdrop-blur-md border-b border-white/5'} md:px-12`}>
-      <div className="flex items-center gap-4">
-        <img src="/logo.png" alt="Artemis Fit Logo" className={`transition-all duration-300 ${scrolled ? 'h-10' : 'h-16'} w-auto`} />
+    <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-3 transition-all duration-300 ${scrolled ? 'py-2 bg-dark/95 backdrop-blur-lg border-b border-white/10' : 'py-4 bg-dark/80 backdrop-blur-md border-b border-white/5'} md:px-12 md:py-6`}>
+      <div className="flex items-center gap-1 sm:gap-4 shrink-0">
+        <img src="/logo.png" alt="Artemis Fit Logo" className={`transition-all duration-300 ${scrolled ? 'h-6 sm:h-7 md:h-10' : 'h-8 sm:h-10 md:h-16'} w-auto`} />
       </div>
       <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/60">
         <a href="#features" className="hover:text-primary transition-colors">Tecnologia</a>
@@ -119,9 +119,9 @@ const Navbar = () => {
         <a href="#ecosystem" className="hover:text-primary transition-colors">Ecossistema</a>
         <a href="#final" className="hover:text-primary transition-colors">Beta</a>
       </div>
-      <div className="flex items-center gap-3">
-        <a href="https://app.artemisfit.online" className="px-5 py-2 bg-primary text-dark rounded-full text-sm font-bold hover:scale-105 transition-all duration-300 flex items-center gap-2 shadow-[0_0_15px_-3px_rgba(205,255,0,0.3)]">
-          <Zap size={16} /> Acessar App
+      <div className="flex items-center gap-2">
+        <a href="https://app.artemisfit.online" className="whitespace-nowrap px-3 sm:px-4 py-2 bg-primary text-dark rounded-full text-[12px] sm:text-sm font-bold hover:scale-105 transition-all duration-300 flex items-center gap-1.5 shadow-[0_0_15px_-3px_rgba(205,255,0,0.3)] shrink-0">
+          <Zap size={14} /> Acessar App
         </a>
       </div>
     </nav>
@@ -155,9 +155,9 @@ const Hero = () => (
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="text-5xl md:text-8xl font-bold font-display leading-[0.9] mb-8 tracking-tight"
+        className="text-[2.1rem] xs:text-[2.4rem] sm:text-5xl md:text-8xl font-bold font-display leading-[1.1] md:leading-[0.9] mb-8 md:mb-10 tracking-tight"
       >
-        Você não está <span className="text-primary italic">falhando</span> no treino. <br />
+        Você não está <span className="text-primary italic">falhando</span> no treino. <br className="hidden md:block" />
         Seu treino que não <span className="text-primary italic">entende você.</span>
       </motion.h1>
 
@@ -165,7 +165,7 @@ const Hero = () => (
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="flex items-center justify-center gap-4 mb-8 text-sm font-bold uppercase tracking-widest"
+        className="flex items-center justify-center gap-3 md:gap-4 mb-8 md:mb-10 text-[10px] md:text-sm font-bold uppercase tracking-widest"
       >
         <span className="text-white/20 line-through">Fitness App</span>
         <ArrowRight size={14} className="text-primary" />
@@ -176,7 +176,7 @@ const Hero = () => (
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto mb-10 leading-relaxed"
+        className="text-base md:text-xl text-white/60 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed px-4"
       >
         Seu corpo não é padrão. O Artemis adapta treinos, nutrição e evolução ao seu ciclo e desempenho real de forma inteligente.
       </motion.p>
@@ -260,19 +260,19 @@ const Hero = () => (
 );
 
 const SocialStats = () => (
-  <div className="relative z-10 -mt-10 mb-20 px-6">
-    <div className="max-w-4xl mx-auto glass rounded-3xl p-8 flex flex-wrap justify-center gap-12 md:gap-24 border border-white/10 shadow-2xl">
+  <div className="relative z-10 -mt-10 mb-20 px-4 md:px-6">
+    <div className="max-w-4xl mx-auto glass rounded-3xl p-6 md:p-8 flex flex-wrap justify-center gap-6 md:gap-24 border border-white/10 shadow-2xl">
       <div className="text-center">
-        <div className="text-3xl md:text-4xl font-bold font-display text-primary mb-1">+500</div>
-        <div className="text-xs font-bold text-white/40 uppercase tracking-widest">Treinos na Beta</div>
+        <div className="text-2xl md:text-4xl font-bold font-display text-primary mb-1">+500</div>
+        <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Treinos na Beta</div>
       </div>
       <div className="text-center">
-        <div className="text-3xl md:text-4xl font-bold font-display text-primary mb-1">98%</div>
-        <div className="text-xs font-bold text-white/40 uppercase tracking-widest">Acurácia IA</div>
+        <div className="text-2xl md:text-4xl font-bold font-display text-primary mb-1">98%</div>
+        <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Acurácia IA</div>
       </div>
-      <div className="text-center border-l border-white/10 pl-12 md:pl-24 hidden sm:block">
-        <div className="text-3xl md:text-4xl font-bold font-display text-primary mb-1">24%</div>
-        <div className="text-xs font-bold text-white/40 uppercase tracking-widest">Mais Consistência</div>
+      <div className="text-center border-l border-white/10 pl-6 md:pl-24 hidden sm:block">
+        <div className="text-2xl md:text-4xl font-bold font-display text-primary mb-1">24%</div>
+        <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest">Mais Consistência</div>
       </div>
     </div>
   </div>
@@ -329,11 +329,11 @@ const BeforeAfterSlider = () => {
 };
 
 const Problem = () => (
-  <section className="py-48 px-6 bg-dark-surface">
-    <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+  <section className="py-24 md:py-48 px-6 bg-dark-surface">
+    <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
       <div>
         <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-6">O Problema</h2>
-        <h3 className="text-4xl md:text-6xl font-bold font-display mb-8 leading-tight">
+        <h3 className="text-[2.2rem] md:text-6xl font-bold font-display mb-8 leading-tight tracking-tight">
           Por que você sente que <span className="text-white/40 italic">está travada?</span>
         </h3>
         <p className="text-lg text-white/60 mb-12">
@@ -420,11 +420,11 @@ const CoreFeatures = () => {
   ];
 
   return (
-    <section id="features" className="py-48 px-6">
+    <section id="features" className="py-24 md:py-48 px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-24">
+        <div className="text-center mb-16 md:mb-24">
           <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-6">A Ciência</h2>
-          <h3 className="text-4xl md:text-7xl font-bold font-display leading-tight">
+          <h3 className="text-[2.2rem] md:text-7xl font-bold font-display leading-tight tracking-tight">
             Inteligência que <br /><span className="italic text-white/40">lê seu corpo.</span>
           </h3>
         </div>
@@ -446,12 +446,12 @@ const CoreFeatures = () => {
 };
 
 const Intelligence = () => (
-  <section className="py-48 px-6 bg-dark overflow-hidden">
+  <section className="py-24 md:py-48 px-6 bg-dark overflow-hidden">
     <div className="max-w-7xl mx-auto">
-      <div className="text-center mb-24">
+      <div className="text-center mb-16 md:mb-24">
         <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-6">A Lógica</h2>
-        <h3 className="text-4xl md:text-7xl font-bold font-display mb-8">Veja como o <span className="text-primary italic">Artemis pensa.</span></h3>
-        <p className="text-lg text-white/40 max-w-2xl mx-auto">
+        <h3 className="text-[2.2rem] md:text-7xl font-bold font-display mb-8 leading-tight tracking-tight">Veja como o <span className="text-primary italic">Artemis pensa.</span></h3>
+        <p className="text-base md:text-lg text-white/40 max-w-2xl mx-auto px-4">
           Diferente de apps que te dão uma lista estática, o Artemis reprograma o seu dia com base na sua biologia.
         </p>
       </div>
@@ -548,12 +548,12 @@ const SmartWorkout = () => {
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-16 md:mb-20">
           <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-6">Treino Inteligente</h2>
-          <h3 className="text-4xl md:text-7xl font-bold font-display leading-[0.95] mb-6">
+          <h3 className="text-[2.2rem] md:text-7xl font-bold font-display leading-[1.1] md:leading-[0.95] mb-6 tracking-tight">
             Seu treino não é fixo.<br /><span className="italic text-white/40">Ele evolui com você.</span>
           </h3>
-          <p className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto">
+          <p className="text-base md:text-xl text-white/50 max-w-2xl mx-auto px-4">
             O Artemis cria seu treino com base no seu nível, objetivo e realidade — e ajusta automaticamente conforme seu desempenho.
           </p>
         </div>
@@ -623,7 +623,7 @@ const SmartWorkout = () => {
         <div className="p-8 md:p-12 rounded-[3rem] bg-dark-surface border border-white/10">
           <div className="text-center mb-10">
             <div className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-3">Mini Simulador</div>
-            <h4 className="text-2xl md:text-4xl font-bold font-display">Veja seu treino<br /><span className="italic text-white/40">antes de começar.</span></h4>
+            <h4 className="text-[1.8rem] md:text-4xl font-bold font-display leading-tight tracking-tight">Veja seu treino<br /><span className="italic text-white/40">antes de começar.</span></h4>
           </div>
 
           <div className="grid md:grid-cols-2 gap-10 items-start">
@@ -746,10 +746,10 @@ const AIExperience = () => (
 
       <div>
         <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-6">Experiência Inteligente</h2>
-        <h3 className="text-4xl md:text-6xl font-bold font-display mb-8 leading-tight">
+        <h3 className="text-[2.2rem] md:text-6xl font-bold font-display mb-8 leading-tight tracking-tight">
           Um treinador que <span className="text-primary italic">fala a sua língua.</span>
         </h3>
-        <p className="text-lg text-white/60 mb-10">
+        <p className="text-base md:text-lg text-white/60 mb-10">
           O Artemis não apenas cospe dados. Ele interpreta o que está acontecendo com você e oferece ações práticas e imediatas.
         </p>
         <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10">
@@ -772,12 +772,12 @@ const AIExperience = () => (
 const VisualProof = () => (
   <section className="py-32 px-6 overflow-hidden">
     <div className="max-w-7xl mx-auto">
-      <div className="text-center mb-24">
+      <div className="text-center mb-16 md:mb-24">
         <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-6">Interface</h2>
-        <h3 className="text-4xl md:text-7xl font-bold font-display mb-8">
-          Design de <span className="text-white/40 italic text-5xl md:text-8xl block mt-4">alta performance.</span>
+        <h3 className="text-[2.2rem] md:text-7xl font-bold font-display mb-8 leading-tight tracking-tight">
+          Design de <span className="text-white/40 italic text-[2.6rem] md:text-8xl block mt-4">alta performance.</span>
         </h3>
-        <p className="text-lg text-white/40 max-w-2xl mx-auto">
+        <p className="text-base md:text-lg text-white/40 max-w-2xl mx-auto px-4">
           Uma experiência fluida, moderna e intuitiva. Cada detalhe foi pensado para facilitar sua evolução diária.
         </p>
       </div>
@@ -932,9 +932,9 @@ export default function Landing() {
 
         <VisualProof />
 
-        <section id="final" className="py-32 px-6 mb-12">
-          <div className="max-w-4xl mx-auto text-center glass p-16 rounded-[4rem] border border-white/10">
-            <h3 className="text-4xl md:text-6xl font-bold font-display mb-10 leading-tight">Chega de <span className="italic text-white/40">adivinhar.</span> <br />Execute com estratégia.</h3>
+        <section id="final" className="py-24 md:py-32 px-6 mb-12">
+          <div className="max-w-4xl mx-auto text-center glass p-10 md:p-16 rounded-[3rem] md:rounded-[4rem] border border-white/10">
+            <h3 className="text-[2.2rem] md:text-6xl font-bold font-display mb-10 leading-tight tracking-tight">Chega de <span className="italic text-white/40">adivinhar.</span> <br />Execute com estratégia.</h3>
             <div className="flex justify-center">
               <SectionCTA text="Garantir meu acesso agora" />
             </div>
