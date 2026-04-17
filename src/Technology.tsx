@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ArrowLeft, Brain, Zap, Target, Calendar, Activity, TrendingUp, ShieldCheck, ChevronRight, Sparkles, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
+import { SEOHead } from './components/SEOHead';
 
 
 
@@ -35,6 +36,11 @@ export const Technology = () => {
 
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark">
+            <SEOHead
+                title="Tecnologia Artemis | Inteligência Feminina em Performance"
+                description="Entenda como a IA Artemis analisa sua biologia, ciclo menstrual e desempenho para criar o sistema de treino mais avançado para mulheres."
+                canonicalUrl="https://artemisfit.online/tecnologia"
+            />
             {/* Navbar */}
             <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 md:px-12 flex items-center gap-8">
                 <a href="/" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">

@@ -118,6 +118,7 @@ export const WorkoutGenerator = () => {
             <SEOHead
                 title="Gerador de Treino Rápido para Mulheres | Artemis Fit"
                 description="Gere um treino de hipertrofia personalizado em segundos baseado no seu tempo e equipamento disponível. Ferramenta gratuita."
+                canonicalUrl="https://artemisfit.online/guia/gerador-de-treino"
             />
 
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between sticky top-0 z-40">

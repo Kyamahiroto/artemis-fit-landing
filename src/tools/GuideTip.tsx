@@ -24,6 +24,7 @@ export const GuideTip = () => {
             <SEOHead
                 title={`${tip.title} | Artemis Fit`}
                 description={tip.paragraphs[0].substring(0, 155) + '...'}
+                canonicalUrl={`https://artemisfit.online/guia/dicas/${tip.slug}`}
             />
 
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between">

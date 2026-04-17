@@ -1,36 +1,21 @@
-import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 
 interface SEOHeadProps {
     title: string;
     description: string;
+    canonicalUrl?: string;
 }
 
-export const SEOHead = ({ title, description }: SEOHeadProps) => {
-    useEffect(() => {
-        document.title = title;
-
-        // Update or create meta description
-        let metaDesc = document.querySelector('meta[name="description"]');
-        if (metaDesc) {
-            metaDesc.setAttribute('content', description);
-        } else {
-            metaDesc = document.createElement('meta');
-            metaDesc.setAttribute('name', 'description');
-            metaDesc.setAttribute('content', description);
-            document.head.appendChild(metaDesc);
-        }
-
-        // Update OG tags
-        let ogTitle = document.querySelector('meta[property="og:title"]');
-        if (ogTitle) ogTitle.setAttribute('content', title);
-
-        let ogDesc = document.querySelector('meta[property="og:description"]');
-        if (ogDesc) ogDesc.setAttribute('content', description);
-
-        return () => {
-            document.title = 'Artemis Fit | Inteligência em Performance Feminina';
-        };
-    }, [title, description]);
-
-    return null;
+export const SEOHead = ({ title, description, canonicalUrl }: SEOHeadProps) => {
+    return (
+        <Helmet>
+            <title>{title}</title>
+            <meta name="description" content={description} />
+            <meta property="og:title" content={title} />
+            <meta property="og:description" content={description} />
+            <meta name="twitter:title" content={title} />
+            <meta name="twitter:description" content={description} />
+            {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+        </Helmet>
+    );
 };

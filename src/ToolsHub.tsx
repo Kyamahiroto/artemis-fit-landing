@@ -50,6 +50,7 @@ export const ToolsHub = () => {
             <SEOHead
                 title="Guia Artemis | Ferramentas e Dicas de Treino para Mulheres"
                 description="Calculadoras, geradores de treino e dicas científicas para otimizar sua performance feminina com base no ciclo menstrual. Ferramentas gratuitas do Artemis Fit."
+                canonicalUrl="https://artemisfit.online/guia"
             />
 
             {/* Navbar */}

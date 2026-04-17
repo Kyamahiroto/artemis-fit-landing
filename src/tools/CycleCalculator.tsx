@@ -80,6 +80,7 @@ export const CycleCalculator = () => {
             <SEOHead
                 title="Calculadora de Ciclo Menstrual e Treino | Artemis Fit"
                 description="Descubra em que fase do ciclo você está e como isso afeta sua força, recuperação e desempenho no treino. Ferramenta gratuita."
+                canonicalUrl="https://artemisfit.online/guia/ciclo-e-treino"
             />
 
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between sticky top-0 z-40">

@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
+import { SEOHead } from './components/SEOHead';
 
 const SectionCTA = ({ text = "Acessar o App", href = "https://app.artemisfit.online" }: { text?: string; href?: string }) => (
   <div className="flex justify-center mt-12 mb-16 px-4 md:px-6">
@@ -869,6 +870,11 @@ const Footer = () => (
 export default function Landing() {
   return (
     <div className="bg-dark min-h-screen selection:bg-primary selection:text-dark">
+      <SEOHead
+          title="Artemis Fit | Inteligência em Performance Feminina"
+          description="O Artemis Fit é o primeiro sistema de performance inteligente desenhado para a biologia feminina. Treino e nutrição adaptados ao seu ciclo menstrual e desempenho."
+          canonicalUrl="https://artemisfit.online/"
+      />
       <Navbar />
       <FloatingCTA />
       <ScrollPopup />
