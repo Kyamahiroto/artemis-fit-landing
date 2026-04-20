@@ -11,6 +11,7 @@ import { WorkoutGenerator } from './tools/WorkoutGenerator';
 import { ProteinCalculator } from './tools/ProteinCalculator';
 import { TrainingDiagnostic } from './tools/TrainingDiagnostic';
 import { GuideTip } from './tools/GuideTip';
+import { InteractiveGuide } from './tools/InteractiveGuide';
 
 // Helper to scroll to top on route change
 const ScrollToTop = () => {
@@ -41,6 +42,7 @@ function App() {
         <Route path="/guia/calculadora-proteina" element={<ProteinCalculator />} />
         <Route path="/guia/diagnostico-treino" element={<TrainingDiagnostic />} />
         <Route path="/guia/dicas/:slug" element={<GuideTip />} />
+        <Route path="/guia/seu-guia" element={<InteractiveGuide />} />
 
         {/* Legacy redirects */}
         <Route path="/ferramentas" element={<ToolsHub />} />
