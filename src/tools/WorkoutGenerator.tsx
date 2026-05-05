@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Zap, Dumbbell, Clock, MapPin, Activity, CheckCircle2, ChevronRight, AlertTriangle, Flame, Timer, BarChart3, Heart } from 'lucide-react';
+import { ArrowLeft, Zap, Dumbbell, Clock, MapPin, Activity, CheckCircle2, ChevronRight, AlertTriangle, Flame, Timer, BarChart3, Heart, Download, Copy, Printer, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
 import { SEOHead } from '../components/SEOHead';
@@ -41,6 +41,7 @@ export const WorkoutGenerator = () => {
     const [warmUp, setWarmUp] = useState<WarmUp[]>([]);
     const [coolDown, setCoolDown] = useState<WarmUp[]>([]);
     const [estimatedCalories, setEstimatedCalories] = useState(0);
+    const [copied, setCopied] = useState(false);
 
     const loadingStages = [
         "Mapeando banco de dados de exercícios...",
@@ -179,15 +180,58 @@ export const WorkoutGenerator = () => {
         }, 3800);
     };
 
+    const copyToClipboard = () => {
+        const text = `
+TREINO ARTEMIS FIT - ${focus?.toUpperCase()} (${local})
+Estimativa: ${estimatedCalories} kcal | Nível: ${level}
+
+AQUECIMENTO:
+${warmUp.map(ex => `- ${ex.name} (${ex.duration})`).join('\n')}
+
+TREINO PRINCIPAL:
+${workout.map(ex => `- ${ex.name}: ${ex.sets} (Descanso: ${ex.rest})${ex.obs ? `\n  Obs: ${ex.obs}` : ''}`).join('\n')}
+
+DESAQUECIMENTO:
+${coolDown.map(ex => `- ${ex.name} (${ex.duration})`).join('\n')}
+
+Gere o seu em: artemisfit.online
+        `.trim();
+
+        navigator.clipboard.writeText(text);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
+    const handlePrint = () => {
+        window.print();
+    };
+
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark pb-32">
+            <style>
+                {`
+                @media print {
+                    nav, .no-print, button, a { display: none !important; }
+                    body { background: white !important; color: black !important; }
+                    .print-only { display: block !important; }
+                    .print-container { padding: 20px !important; border: 1px solid #eee !important; border-radius: 0 !important; box-shadow: none !important; background: white !important; }
+                    .print-bg-fix { background-color: #f9f9f9 !important; border: 1px solid #ddd !important; padding: 15px !important; color: black !important; }
+                    .text-white { color: black !important; }
+                    .text-white/40, .text-white/50, .text-white/70 { color: #555 !important; }
+                    .bg-dark, .bg-dark-surface, .bg-white/5 { background: white !important; }
+                    .border-white/10 { border-color: #eee !important; }
+                    .text-primary { color: #000 !important; font-weight: bold !important; text-decoration: underline; }
+                }
+                `}
+            </style>
+            
             <SEOHead
                 title="Gerador de Treino Rápido para Mulheres | Artemis Fit"
                 description="Gere um treino de hipertrofia personalizado em segundos baseado no seu tempo, equipamento e nível. Ferramenta gratuita."
                 canonicalUrl="https://artemisfit.online/guia/gerador-de-treino"
             />
 
-            <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between sticky top-0 z-40">
+            <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between sticky top-0 z-40 no-print">
                 <Link to="/guia" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
                     <ArrowLeft size={16} /> Guia Artemis
                 </Link>
@@ -296,7 +340,7 @@ export const WorkoutGenerator = () => {
                     {/* RESULT STEP */}
                     {step === 'result' && (
                         <motion.div key="result" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }}>
-                            <div className="text-center mb-8">
+                            <div className="text-center mb-8 no-print">
                                 <div className="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-widest mb-4 bg-primary/10 px-4 py-2 rounded-full">
                                     <CheckCircle2 size={16} /> Treino Gerado
                                 </div>
@@ -307,8 +351,8 @@ export const WorkoutGenerator = () => {
                                 toolResults={{ local, focus, time, level, exerciseCount: workout.length, estimatedCalories }}
                                 previewContent={
                                     /* Preview: Summary tags + calorie estimate */
-                                    <div className="bg-dark-surface border border-white/10 rounded-[2rem] p-8 shadow-xl relative overflow-hidden">
-                                        <div className="absolute top-0 right-0 p-8 opacity-5"><Dumbbell size={100} /></div>
+                                    <div className="bg-dark-surface border border-white/10 rounded-[2rem] p-8 shadow-xl relative overflow-hidden print-container">
+                                        <div className="absolute top-0 right-0 p-8 opacity-5 no-print"><Dumbbell size={100} /></div>
 
                                         <div className="flex flex-wrap gap-3 mb-6 relative z-10">
                                             <div className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs font-bold text-white/50">{local}</div>
@@ -318,35 +362,56 @@ export const WorkoutGenerator = () => {
                                         </div>
 
                                         <div className="grid grid-cols-3 gap-4 relative z-10">
-                                            <div className="text-center p-3 bg-white/5 rounded-xl">
-                                                <Dumbbell size={16} className="text-primary mx-auto mb-1" />
+                                            <div className="text-center p-3 bg-white/5 rounded-xl print-bg-fix">
+                                                <Dumbbell size={16} className="text-primary mx-auto mb-1 no-print" />
                                                 <div className="text-lg font-bold">{workout.length}</div>
-                                                <div className="text-[10px] text-white/30">Exercícios</div>
+                                                <div className="text-[10px] text-white/30 uppercase font-bold tracking-widest">Exercícios</div>
                                             </div>
-                                            <div className="text-center p-3 bg-white/5 rounded-xl">
-                                                <Flame size={16} className="text-orange-400 mx-auto mb-1" />
+                                            <div className="text-center p-3 bg-white/5 rounded-xl print-bg-fix">
+                                                <Flame size={16} className="text-orange-400 mx-auto mb-1 no-print" />
                                                 <div className="text-lg font-bold">~{estimatedCalories}</div>
-                                                <div className="text-[10px] text-white/30">kcal estimadas</div>
+                                                <div className="text-[10px] text-white/30 uppercase font-bold tracking-widest">kcal</div>
                                             </div>
-                                            <div className="text-center p-3 bg-white/5 rounded-xl">
-                                                <Clock size={16} className="text-blue-400 mx-auto mb-1" />
+                                            <div className="text-center p-3 bg-white/5 rounded-xl print-bg-fix">
+                                                <Clock size={16} className="text-blue-400 mx-auto mb-1 no-print" />
                                                 <div className="text-lg font-bold">{time}</div>
-                                                <div className="text-[10px] text-white/30">Duração</div>
+                                                <div className="text-[10px] text-white/30 uppercase font-bold tracking-widest">Tempo</div>
                                             </div>
                                         </div>
                                     </div>
                                 }
                             >
+                                {/* ========== ACTIONS (Post-Unlock) ========== */}
+                                <div className="flex flex-col sm:flex-row gap-3 mb-8 no-print">
+                                    <button 
+                                        onClick={copyToClipboard}
+                                        className="flex-1 flex items-center justify-center gap-2 py-4 bg-white/5 border border-white/10 hover:border-primary/50 rounded-2xl text-sm font-bold transition-all group"
+                                    >
+                                        {copied ? <><Check size={18} className="text-primary" /> Copiado!</> : <><Copy size={18} className="group-hover:text-primary transition-colors" /> Copiar Treino (Texto)</>}
+                                    </button>
+                                    <button 
+                                        onClick={handlePrint}
+                                        className="flex-1 flex items-center justify-center gap-2 py-4 bg-primary text-dark rounded-2xl text-sm font-bold hover:brightness-110 transition-all shadow-[0_10px_20px_-5px_rgba(205,255,0,0.3)]"
+                                    >
+                                        <Printer size={18} /> Baixar PDF / Imprimir
+                                    </button>
+                                </div>
+
+                                <div className="hidden print-only text-center mb-10 pb-6 border-b">
+                                    <h1 className="text-3xl font-bold">Artemis Fit - Treino Personalizado</h1>
+                                    <p className="text-sm">Foco: {focus} | Nível: {level} | Local: {local}</p>
+                                </div>
+
                                 {/* ========== FULL WORKOUT (after email unlock) ========== */}
 
                                 {/* Warm-up */}
-                                <div className="bg-dark-surface border border-white/10 rounded-[2rem] p-6 mb-4 shadow-xl">
+                                <div className="bg-dark-surface border border-white/10 rounded-[2rem] p-6 mb-4 shadow-xl print-container">
                                     <h3 className="text-sm font-bold uppercase tracking-widest text-white/40 mb-4 flex items-center gap-2">
-                                        <Heart size={14} className="text-red-400" /> Aquecimento ({warmUp.length} exercícios)
+                                        <Heart size={14} className="text-red-400 no-print" /> Aquecimento ({warmUp.length} exercícios)
                                     </h3>
                                     <div className="space-y-2">
                                         {warmUp.map((ex, i) => (
-                                            <div key={i} className="flex items-center justify-between p-3 bg-red-500/5 border border-red-500/10 rounded-xl text-sm">
+                                            <div key={i} className="flex items-center justify-between p-3 bg-red-500/5 border border-red-500/10 rounded-xl text-sm print-bg-fix">
                                                 <span className="text-white/70">{ex.name}</span>
                                                 <span className="text-red-400/60 font-bold text-xs shrink-0 ml-2">{ex.duration}</span>
                                             </div>
@@ -355,9 +420,9 @@ export const WorkoutGenerator = () => {
                                 </div>
 
                                 {/* Main Workout */}
-                                <div className="bg-dark-surface border border-white/10 rounded-[2rem] p-6 mb-4 shadow-xl">
+                                <div className="bg-dark-surface border border-white/10 rounded-[2rem] p-6 mb-4 shadow-xl print-container">
                                     <h3 className="text-sm font-bold uppercase tracking-widest text-white/40 mb-4 flex items-center gap-2">
-                                        <Dumbbell size={14} className="text-primary" /> Treino Principal
+                                        <Dumbbell size={14} className="text-primary no-print" /> Treino Principal
                                     </h3>
                                     <div className="space-y-4">
                                         {workout.map((ex, i) => (
@@ -366,13 +431,13 @@ export const WorkoutGenerator = () => {
                                                 initial={{ opacity: 0, x: -20 }}
                                                 animate={{ opacity: 1, x: 0 }}
                                                 transition={{ delay: i * 0.1 }}
-                                                className="p-4 bg-white/5 rounded-2xl border border-white/5"
+                                                className="p-4 bg-white/5 rounded-2xl border border-white/5 print-bg-fix"
                                             >
                                                 <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3">
                                                     <div className="flex-1">
                                                         <div className="font-bold text-base mb-1">{ex.name}</div>
-                                                        {ex.obs && <div className="text-xs text-primary mb-2">{ex.obs}</div>}
-                                                        <div className="flex flex-wrap gap-2">
+                                                        {ex.obs && <div className="text-xs text-primary mb-2 italic">{ex.obs}</div>}
+                                                        <div className="flex flex-wrap gap-2 no-print">
                                                             <span className={`px-2 py-0.5 rounded text-[10px] font-bold border ${intensityColors[ex.intensity]}`}>
                                                                 {ex.intensity}
                                                             </span>
@@ -380,8 +445,11 @@ export const WorkoutGenerator = () => {
                                                                 <Timer size={8} /> Descanso: {ex.rest}
                                                             </span>
                                                         </div>
+                                                        <div className="hidden print-only text-xs mt-1">
+                                                            Séries: {ex.sets} | Descanso: {ex.rest}
+                                                        </div>
                                                     </div>
-                                                    <div className="px-4 py-2 bg-dark rounded-xl text-sm font-bold text-white/80 shrink-0 text-center">
+                                                    <div className="px-4 py-2 bg-dark rounded-xl text-sm font-bold text-white/80 shrink-0 text-center no-print border border-white/5">
                                                         {ex.sets}
                                                     </div>
                                                 </div>
@@ -391,13 +459,13 @@ export const WorkoutGenerator = () => {
                                 </div>
 
                                 {/* Cool-down */}
-                                <div className="bg-dark-surface border border-white/10 rounded-[2rem] p-6 mb-6 shadow-xl">
+                                <div className="bg-dark-surface border border-white/10 rounded-[2rem] p-6 mb-6 shadow-xl print-container">
                                     <h3 className="text-sm font-bold uppercase tracking-widest text-white/40 mb-4 flex items-center gap-2">
-                                        <Activity size={14} className="text-blue-400" /> Desaquecimento
+                                        <Activity size={14} className="text-blue-400 no-print" /> Desaquecimento
                                     </h3>
                                     <div className="space-y-2">
                                         {coolDown.map((ex, i) => (
-                                            <div key={i} className="flex items-center justify-between p-3 bg-blue-500/5 border border-blue-500/10 rounded-xl text-sm">
+                                            <div key={i} className="flex items-center justify-between p-3 bg-blue-500/5 border border-blue-500/10 rounded-xl text-sm print-bg-fix">
                                                 <span className="text-white/70">{ex.name}</span>
                                                 <span className="text-blue-400/60 font-bold text-xs shrink-0 ml-2">{ex.duration}</span>
                                             </div>
@@ -407,7 +475,7 @@ export const WorkoutGenerator = () => {
                             </EmailGate>
 
                             {/* CTA Block */}
-                            <div className="p-8 bg-black border border-white/10 rounded-[2rem] relative overflow-hidden mt-8">
+                            <div className="p-8 bg-black border border-white/10 rounded-[2rem] relative overflow-hidden mt-8 no-print">
                                 <div className="absolute top-0 left-0 w-1 bg-red-500 h-full"></div>
                                 <div className="flex items-start gap-4">
                                     <div className="w-12 h-12 rounded-full bg-red-500/10 flex items-center justify-center shrink-0">

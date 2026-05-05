@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from 'react';
 
 const STORAGE_KEY = 'artemis_lead_email';
 const STORAGE_NAME_KEY = 'artemis_lead_name';
-const EDGE_FUNCTION_URL = 'https://vgraihcqjyfbsnmilsxt.supabase.co/functions/v1/capture-lead';
+const EDGE_FUNCTION_URL = 'https://nyytfhdsybxoovxmeffr.supabase.co/functions/v1/capture-lead';
 
 interface CapturePayload {
   email: string;

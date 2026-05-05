@@ -1,6 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Landing from './Landing';
+import { Admin } from './Admin';
+import { GuideReader } from './GuideReader';
 import { Privacy } from './Privacy';
 import { Terms } from './Terms';
 import { Cookies } from './Cookies';
@@ -29,6 +31,7 @@ function App() {
     <Router>
       <ScrollToTop />
       <Routes>
+        <Route path="/admin" element={<Admin />} />
         <Route path="/" element={<Landing />} />
         <Route path="/privacidade" element={<Privacy />} />
         <Route path="/termos" element={<Terms />} />
@@ -42,6 +45,7 @@ function App() {
         <Route path="/guia/calculadora-proteina" element={<ProteinCalculator />} />
         <Route path="/guia/diagnostico-treino" element={<TrainingDiagnostic />} />
         <Route path="/guia/dicas/:slug" element={<GuideTip />} />
+        <Route path="/guia/artigo/:slug" element={<GuideReader />} />
         <Route path="/guia/seu-guia" element={<InteractiveGuide />} />
 
         {/* Legacy redirects */}

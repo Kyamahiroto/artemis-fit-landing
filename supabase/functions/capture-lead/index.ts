@@ -1,3 +1,4 @@
+// @ts-nocheck
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
@@ -59,8 +60,34 @@ Deno.serve(async (req: Request) => {
     const resendApiKey = Deno.env.get("RESEND_API_KEY");
     if (resendApiKey) {
       try {
-        const guideUrl = "https://artemisfit.online/guia/seu-guia";
         const userName = name || "Guerreira";
+
+        // Context-aware content and REDIRECTION based on source_tool
+        let contextTitle = "Seu Guia está pronto!";
+        let contextSubtitle = "Treino + Ciclo Menstrual — tudo que você precisa saber";
+        let contextIcon = "📅";
+        let contextText = "As 4 fases do ciclo e como treinar em cada uma";
+        let guideSlug = "guia-completo-treino-feminino"; // Valor padrão caso não encontre
+
+        if (source_tool === "ciclo-e-treino") {
+          contextTitle = "Análise do seu Ciclo 📅";
+          contextSubtitle = "Descobrimos em qual fase você está e o que fazer hoje.";
+          guideSlug = "guia-treino-feminino-ciclo";
+        } else if (source_tool === "gerador-de-treino") {
+          contextTitle = "Seu Plano de Treino ⚡";
+          contextSubtitle = "Otimizado para o seu tempo e objetivo de hoje.";
+          contextIcon = "💪";
+          contextText = "Como evoluir carga mesmo com pouco tempo";
+          guideSlug = "como-treinar-eficiente";
+        } else if (source_tool === "calculadora-proteina") {
+          contextTitle = "Meta de Proteína 🥩";
+          contextSubtitle = "Sua distribuição ideal para evitar perda de massa.";
+          contextIcon = "🍳";
+          contextText = "Dicas de pré e pós treino para seu perfil";
+          guideSlug = "guia-proteina-musculo-feminino";
+        }
+
+        const guideUrl = `https://artemisfit.online/guia/artigo/${guideSlug}`;
 
         const emailHtml = `
 <!DOCTYPE html>
@@ -78,10 +105,10 @@ Deno.serve(async (req: Request) => {
         ✨ Guia Exclusivo Artemis
       </div>
       <h1 style="color:#ffffff;font-size:28px;margin:0 0 8px 0;font-weight:bold;">
-        ${userName}, seu Guia está pronto!
+        ${userName}, ${contextTitle}
       </h1>
       <p style="color:rgba(255,255,255,0.5);font-size:14px;margin:0;">
-        Treino + Ciclo Menstrual — tudo que você precisa saber
+        ${contextSubtitle}
       </p>
     </div>
 
@@ -91,8 +118,8 @@ Deno.serve(async (req: Request) => {
       
       <div style="margin-bottom:24px;">
         <div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
-          <span style="color:#CDFF00;font-weight:bold;">📅</span>
-          <span style="color:rgba(255,255,255,0.8);font-size:14px;margin-left:8px;">As 4 fases do ciclo e como treinar em cada uma</span>
+          <span style="color:#CDFF00;font-weight:bold;">${contextIcon}</span>
+          <span style="color:rgba(255,255,255,0.8);font-size:14px;margin-left:8px;">${contextText}</span>
         </div>
         <div style="padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.05);">
           <span style="color:#CDFF00;font-weight:bold;">🧠</span>
@@ -115,7 +142,7 @@ Deno.serve(async (req: Request) => {
       <!-- CTA Button -->
       <div style="text-align:center;">
         <a href="${guideUrl}" style="display:inline-block;padding:16px 32px;background-color:#CDFF00;color:#0a0a0a;border-radius:100px;font-weight:bold;font-size:16px;text-decoration:none;">
-          ⚡ Acessar Meu Guia Agora
+          ⚡ Acessar Conteúdo Específico
         </a>
       </div>
     </div>
@@ -153,7 +180,7 @@ Deno.serve(async (req: Request) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            from: "Artemis Fit <guia@artemisfit.online>",
+            from: "Artemis Fit <guia@app.artemisfit.online>",
             to: [email],
             subject: `${userName}, seu Guia de Treino + Ciclo está pronto! ⚡`,
             html: emailHtml,

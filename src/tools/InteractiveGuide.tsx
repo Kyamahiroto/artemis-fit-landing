@@ -11,6 +11,7 @@ import {
   cyclePhases, quizQuestions, mythsFacts, faqItems, actionSteps,
   type QuizQuestion,
 } from '../data/guideContent';
+import { EmailGate } from '../components/EmailGate';
 
 // ===================================================================
 // ANIMATED SECTION WRAPPER
@@ -121,7 +122,7 @@ const PhaseFlipCard: React.FC<{ phase: typeof cyclePhases[0]; index: number }> =
             <div>
               <h4 className="font-bold text-white/80 mb-1.5">🥗 {phase.nutrition.title}</h4>
               <ul className="space-y-1 text-white/50">
-                {phase.nutrition.tips.slice(0, 2).map((t, i) => (
+                {phase.training.tips.slice(0, 2).map((t, i) => (
                   <li key={i} className="flex items-start gap-1.5">
                     <span className="text-primary mt-0.5">•</span> {t}
                   </li>
@@ -166,11 +167,12 @@ const QuizSection: React.FC = () => {
       setTimeout(() => {
         setIsDone(true);
         setShowConfetti(true);
-        // Save quiz data to localStorage for potential upload
+        // Lead data is already captured by EmailGate if they reached here
+        // but we could update with quiz data
         const storedEmail = localStorage.getItem('artemis_lead_email');
         if (storedEmail) {
           try {
-            fetch('https://vgraihcqjyfbsnmilsxt.supabase.co/functions/v1/capture-lead', {
+            fetch('https://nyytfhdsybxoovxmeffr.supabase.co/functions/v1/capture-lead', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
@@ -365,11 +367,11 @@ const FAQAccordion: React.FC = () => {
     <div className="max-w-2xl mx-auto space-y-3">
       {faqItems.map((item, i) => (
         <motion.div
-          key={i}
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: i * 0.05 }}
+            key={i}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.05 }}
         >
           <button
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
@@ -436,11 +438,8 @@ export const InteractiveGuide = () => {
         </div>
       </nav>
 
-      {/* ============================================================ */}
-      {/* HERO SECTION */}
-      {/* ============================================================ */}
+      {/* Hero Body Context */}
       <section className="pt-32 pb-20 px-6 text-center relative overflow-hidden">
-        {/* Background glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
         <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -459,157 +458,165 @@ export const InteractiveGuide = () => {
           <p className="text-lg text-white/50 max-w-xl mx-auto mb-10">
             Tudo que você precisa saber para treinar respeitando sua biologia — de forma interativa, visual e direto ao ponto.
           </p>
-
-          <div className="flex flex-wrap justify-center gap-4 text-xs font-bold text-white/30 uppercase tracking-widest">
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-primary" /> 4 Fases do Ciclo</span>
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-primary" /> Quiz Personalizado</span>
-            <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 rounded-full bg-primary" /> FAQ Científico</span>
-          </div>
         </motion.div>
       </section>
 
-      {/* ============================================================ */}
-      {/* SECTION 1: CYCLE PHASES (FLIP CARDS) */}
-      {/* ============================================================ */}
-      <section className="py-20 px-6 max-w-5xl mx-auto">
-        <AnimatedSection>
-          <SectionHeader
-            tag="Entenda seu Corpo"
-            title={<>As <span className="text-primary italic">4 Fases</span> do seu Ciclo</>}
-            subtitle="Cada fase muda completamente como seu corpo responde ao treino, nutrição e descanso. Toque nos cards para explorar."
-          />
-        </AnimatedSection>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {cyclePhases.map((phase, i) => (
-            <AnimatedSection key={phase.name} delay={i * 0.1}>
-              <PhaseFlipCard phase={phase} index={i} />
-            </AnimatedSection>
-          ))}
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* SECTION 2: QUIZ */}
-      {/* ============================================================ */}
-      <section className="py-20 px-6 relative">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
-        <AnimatedSection>
-          <SectionHeader
-            tag="Quiz Rápido"
-            title={<>Qual é o seu <span className="text-primary italic">maior desafio?</span></>}
-            subtitle="Responda 5 perguntas rápidas para recebermos uma dica personalizada para você."
-          />
-        </AnimatedSection>
-        <AnimatedSection delay={0.2}>
-          <QuizSection />
-        </AnimatedSection>
-      </section>
-
-      {/* ============================================================ */}
-      {/* SECTION 3: MYTHS VS FACTS */}
-      {/* ============================================================ */}
-      <section className="py-20 px-6 max-w-3xl mx-auto">
-        <AnimatedSection>
-          <SectionHeader
-            tag="Derrube os Mitos"
-            title={<><span className="text-primary italic">Mito</span> ou <span className="text-emerald-400 italic">Verdade?</span></>}
-            subtitle="Toque em cada afirmação para descobrir se é mito ou verdade. Você vai se surpreender."
-          />
-        </AnimatedSection>
-
-        <div className="grid md:grid-cols-2 gap-4">
-          {mythsFacts.map((item, i) => (
-            <MythCard key={i} item={item} index={i} />
-          ))}
-        </div>
-      </section>
-
-      {/* ============================================================ */}
-      {/* SECTION 4: FAQ */}
-      {/* ============================================================ */}
-      <section className="py-20 px-6">
-        <AnimatedSection>
-          <SectionHeader
-            tag="Dúvidas Frequentes"
-            title={<>As <span className="text-primary italic">10 perguntas</span> mais comuns</>}
-            subtitle="Respostas diretas e baseadas em ciência sobre treino e ciclo menstrual."
-          />
-        </AnimatedSection>
-        <AnimatedSection delay={0.2}>
-          <FAQAccordion />
-        </AnimatedSection>
-      </section>
-
-      {/* ============================================================ */}
-      {/* SECTION 5: ACTION PLAN TIMELINE */}
-      {/* ============================================================ */}
-      <section className="py-20 px-6 max-w-2xl mx-auto">
-        <AnimatedSection>
-          <SectionHeader
-            tag="Seu Plano de Ação"
-            title={<>4 Passos para <span className="text-primary italic">resultados reais</span></>}
-            subtitle="Um roadmap simples para parar de treinar às cegas e começar a evoluir de verdade."
-          />
-        </AnimatedSection>
-
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent" />
-
-          <div className="space-y-8">
-            {actionSteps.map((step, i) => (
-              <AnimatedSection key={i} delay={i * 0.15}>
-                <div className="flex gap-6 items-start">
-                  {/* Step indicator */}
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 relative z-10 text-lg ${
-                    step.isCTA
-                      ? 'bg-primary text-dark shadow-[0_0_20px_-5px_rgba(205,255,0,0.4)]'
-                      : 'bg-dark-surface border border-white/10'
-                  }`}>
-                    {step.icon}
-                  </div>
-
-                  <div className={`flex-1 p-6 rounded-2xl border ${
-                    step.isCTA
-                      ? 'bg-primary/5 border-primary/20'
-                      : 'bg-white/[0.03] border-white/10'
-                  }`}>
-                    <div className="text-[10px] text-white/30 uppercase tracking-widest font-bold mb-1">
-                      Passo {step.step}
-                    </div>
-                    <h3 className={`text-lg font-bold mb-2 ${step.isCTA ? 'text-primary' : ''}`}>
-                      {step.title}
-                    </h3>
-                    <p className="text-white/50 text-sm leading-relaxed">{step.description}</p>
-
-                    {step.isCTA && (
-                      <a
-                        href="https://app.artemisfit.online"
-                        className="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-primary text-dark rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_0_20px_-5px_rgba(205,255,0,0.4)]"
-                      >
-                        <Zap size={16} /> Começar Agora com IA
-                      </a>
-                    )}
-                  </div>
+      <main className="max-w-6xl mx-auto px-6">
+          <EmailGate
+            toolName="interactive_guide"
+            previewContent={
+                <div className="p-8 rounded-[2rem] border border-white/10 bg-white/5 text-center mb-10 shadow-xl overflow-hidden relative group">
+                     <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-50" />
+                     <div className="relative z-10">
+                         <BookOpen size={48} className="text-primary mx-auto mb-4" />
+                         <h3 className="text-xl font-bold mb-2">Manual da Mulher Moderna</h3>
+                         <p className="text-white/40 text-sm max-w-sm mx-auto">Um guia dividido em 4 fases biológicas, mitos, verdades e um plano de ação prático.</p>
+                         <div className="mt-6 flex flex-wrap justify-center gap-3">
+                             <div className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-bold text-white/30">12 min de leitura</div>
+                             <div className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] uppercase font-bold text-white/30 italic">Cientificamente Validado</div>
+                         </div>
+                     </div>
                 </div>
-              </AnimatedSection>
-            ))}
-          </div>
-        </div>
-      </section>
+            }
+          >
+            {/* ============================================================ */}
+            {/* SECTION 1: CYCLE PHASES (FLIP CARDS) */}
+            {/* ============================================================ */}
+            <section className="py-20">
+                <AnimatedSection>
+                <SectionHeader
+                    tag="Entenda seu Corpo"
+                    title={<>As <span className="text-primary italic">4 Fases</span> do seu Ciclo</>}
+                    subtitle="Cada fase muda completamente como seu corpo responde ao treino, nutrição e descanso. Toque nos cards para explorar."
+                />
+                </AnimatedSection>
 
-      {/* ============================================================ */}
-      {/* SECTION 6: FINAL CTA */}
-      {/* ============================================================ */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+                {cyclePhases.map((phase, i) => (
+                    <AnimatedSection key={phase.name} delay={i * 0.1}>
+                    <PhaseFlipCard phase={phase} index={i} />
+                    </AnimatedSection>
+                ))}
+                </div>
+            </section>
+
+            {/* ============================================================ */}
+            {/* SECTION 2: QUIZ */}
+            {/* ============================================================ */}
+            <section className="py-20 relative">
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/[0.02] to-transparent pointer-events-none" />
+                <AnimatedSection>
+                <SectionHeader
+                    tag="Quiz Rápido"
+                    title={<>Qual é o seu <span className="text-primary italic">maior desafio?</span></>}
+                    subtitle="Responda 5 perguntas rápidas para recebermos uma dica personalizada para você."
+                />
+                </AnimatedSection>
+                <AnimatedSection delay={0.2}>
+                <QuizSection />
+                </AnimatedSection>
+            </section>
+
+            {/* ============================================================ */}
+            {/* SECTION 3: MYTHS VS FACTS */}
+            {/* ============================================================ */}
+            <section className="py-20 max-w-3xl mx-auto">
+                <AnimatedSection>
+                <SectionHeader
+                    tag="Derrube os Mitos"
+                    title={<><span className="text-primary italic">Mito</span> ou <span className="text-emerald-400 italic">Verdade?</span></>}
+                    subtitle="Toque em cada afirmação para descobrir se é mito ou verdade. Você vai se surpreender."
+                />
+                </AnimatedSection>
+
+                <div className="grid md:grid-cols-2 gap-4">
+                {mythsFacts.map((item, i) => (
+                    <MythCard key={i} item={item} index={i} />
+                ))}
+                </div>
+            </section>
+
+            {/* ============================================================ */}
+            {/* SECTION 4: FAQ */}
+            {/* ============================================================ */}
+            <section className="py-20">
+                <AnimatedSection>
+                <SectionHeader
+                    tag="Dúvidas Frequentes"
+                    title={<>As <span className="text-primary italic">10 perguntas</span> mais comuns</>}
+                    subtitle="Respostas diretas e baseadas em ciência sobre treino e ciclo menstrual."
+                />
+                </AnimatedSection>
+                <AnimatedSection delay={0.2}>
+                <FAQAccordion />
+                </AnimatedSection>
+            </section>
+
+            {/* ============================================================ */}
+            {/* SECTION 5: ACTION PLAN TIMELINE */}
+            {/* ============================================================ */}
+            <section className="py-20 max-w-2xl mx-auto">
+                <AnimatedSection>
+                <SectionHeader
+                    tag="Seu Plano de Ação"
+                    title={<>4 Passos para <span className="text-primary italic">resultados reais</span></>}
+                    subtitle="Um roadmap simples para parar de treinar às cegas e começar a evoluir de verdade."
+                />
+                </AnimatedSection>
+
+                <div className="relative">
+                <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent" />
+
+                <div className="space-y-8">
+                    {actionSteps.map((step, i) => (
+                    <AnimatedSection key={i} delay={i * 0.15}>
+                        <div className="flex gap-6 items-start">
+                        <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 relative z-10 text-lg ${
+                            step.isCTA
+                            ? 'bg-primary text-dark shadow-[0_0_20px_-5px_rgba(205,255,0,0.4)]'
+                            : 'bg-dark-surface border border-white/10'
+                        }`}>
+                            {step.icon}
+                        </div>
+
+                        <div className={`flex-1 p-6 rounded-2xl border ${
+                            step.isCTA
+                            ? 'bg-primary/5 border-primary/20'
+                            : 'bg-white/[0.03] border-white/10'
+                        }`}>
+                            <div className="text-[10px] text-white/30 uppercase tracking-widest font-bold mb-1">
+                            Passo {step.step}
+                            </div>
+                            <h3 className={`text-lg font-bold mb-2 ${step.isCTA ? 'text-primary' : ''}`}>
+                            {step.title}
+                            </h3>
+                            <p className="text-white/50 text-sm leading-relaxed">{step.description}</p>
+
+                            {step.isCTA && (
+                            <a
+                                href="https://app.artemisfit.online"
+                                className="inline-flex items-center gap-2 mt-4 px-6 py-3 bg-primary text-dark rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_0_20px_-5px_rgba(205,255,0,0.4)]"
+                            >
+                                <Zap size={16} /> Começar Agora com IA
+                            </a>
+                            )}
+                        </div>
+                        </div>
+                    </AnimatedSection>
+                    ))}
+                </div>
+                </div>
+            </section>
+          </EmailGate>
+      </main>
+
+      {/* FINAL CTA */}
       <section className="py-20 px-6">
         <AnimatedSection>
           <div className="max-w-2xl mx-auto relative">
-            {/* Glow background */}
             <div className="absolute -inset-4 bg-primary/10 rounded-[3rem] blur-3xl opacity-30" />
 
             <div className="relative p-10 md:p-14 rounded-[2.5rem] border border-primary/20 bg-dark-surface text-center overflow-hidden">
-              {/* Decorative elements */}
               <div className="absolute top-0 right-0 p-8 opacity-5">
                 <Target size={150} />
               </div>
@@ -624,7 +631,7 @@ export const InteractiveGuide = () => {
               </h2>
 
               <p className="text-white/50 max-w-lg mx-auto mb-8">
-                Este guia te mostrou O QUE fazer. O Artemis Fit faz isso AUTOMATICAMENTE — adaptando treino, nutrição e descanso ao seu ciclo em tempo real, todos os dias, com inteligência artificial.
+                O Artemis Fit automatiza toda essa ciência para você em tempo real, todos os dias, com inteligência artificial.
               </p>
 
               <a

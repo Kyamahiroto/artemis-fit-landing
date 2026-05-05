@@ -260,6 +260,75 @@ const Hero = () => (
   </section>
 );
 
+const Testimonials = () => {
+  const testimonials = [
+    {
+      name: "Mariana",
+      age: 29,
+      text: "Consegui manter consistência pela primeira vez em 2 anos. O Artemis entende quando estou cansada e quando posso dar meu máximo.",
+      img: "/testimonial_mariana.png",
+      result: "Consistência de 6 meses"
+    },
+    {
+      name: "Camila",
+      age: 34,
+      text: "O treino adaptado ao ciclo mudou meu corpo. Parei de brigar com minha biologia e comecei a usá-la a meu favor. 4kg de massa em 3 meses.",
+      img: "/testimonial_camila.png",
+      result: "+4kg de massa magra"
+    },
+    {
+      name: "Beatriz",
+      age: 26,
+      text: "Finalmente um app que não me trata como um robô. O Artemis Score me dá clareza sobre minha evolução real, além do espelho.",
+      img: "/testimonial_beatriz.png",
+      result: "Performance Monitorada"
+    }
+  ];
+
+  return (
+    <section className="py-20 px-6 relative z-10 -mt-10">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8">
+          {testimonials.map((t, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+              className="glass p-8 rounded-[2.5rem] border border-white/10 flex flex-col items-center text-center group hover:border-primary/30 transition-all shadow-2xl"
+            >
+              <div className="w-24 h-24 rounded-full overflow-hidden mb-6 border-[3px] border-primary/20 group-hover:border-primary/50 transition-all">
+                <img src={t.img} alt={t.name} className="w-full h-full object-cover" />
+              </div>
+              <div className="flex flex-col items-center gap-1 mb-4">
+                <span className="font-bold text-lg">{t.name}, {t.age} anos</span>
+                <div className="flex gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      transition={{ delay: 0.2 + (i * 0.05) }}
+                    >
+                      <Sparkles size={12} className="text-primary fill-primary" />
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+              <p className="text-white/70 italic text-sm leading-relaxed mb-6">
+                "{t.text}"
+              </p>
+              <div className="mt-auto px-4 py-2 bg-primary/10 border border-primary/20 rounded-full text-[10px] font-bold uppercase tracking-widest text-primary">
+                {t.result}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const SocialStats = () => (
   <div className="relative z-10 -mt-10 mb-20 px-4 md:px-6">
     <div className="max-w-4xl mx-auto glass rounded-3xl p-6 md:p-8 flex flex-wrap justify-center gap-6 md:gap-24 border border-white/10 shadow-2xl">
@@ -881,6 +950,7 @@ export default function Landing() {
 
       <main>
         <Hero />
+        <Testimonials />
         <SocialStats />
         <Problem />
 
