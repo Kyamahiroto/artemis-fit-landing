@@ -18,7 +18,7 @@ export const EmailGate: React.FC<EmailGateProps> = ({
   previewContent,
   children,
 }) => {
-  const { isUnlocked, isLoading, captureLead } = useLeadCapture();
+  const { isUnlocked, isLoading, capturedEmail, captureLead } = useLeadCapture();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [acceptComms, setAcceptComms] = useState(true);
@@ -249,7 +249,7 @@ export const EmailGate: React.FC<EmailGateProps> = ({
               className="flex items-center gap-3 justify-center mb-10 px-6 py-3 bg-primary/10 border border-primary/20 rounded-2xl text-sm font-bold text-primary mx-auto w-fit shadow-[0_0_30px_rgba(205,255,0,0.1)]"
             >
               <CheckCircle2 size={18} /> 
-              <span>Tudo certo! O Guia Artemis foi enviado para <b>{email}</b></span>
+              <span>Tudo certo! O Guia Artemis foi enviado para <b>{email || capturedEmail}</b></span>
             </motion.div>
           )}
           {children}

@@ -210,17 +210,94 @@ Gere o seu em: artemisfit.online
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark pb-32">
             <style>
                 {`
+                @page {
+                    margin: 0;
+                    size: auto;
+                }
                 @media print {
                     nav, .no-print, button, a { display: none !important; }
-                    body { background: white !important; color: black !important; }
+                    body { 
+                        background: white !important; 
+                        color: black !important; 
+                        margin: 0 !important;
+                        padding: 0 !important;
+                    }
                     .print-only { display: block !important; }
-                    .print-container { padding: 20px !important; border: 1px solid #eee !important; border-radius: 0 !important; box-shadow: none !important; background: white !important; }
-                    .print-bg-fix { background-color: #f9f9f9 !important; border: 1px solid #ddd !important; padding: 15px !important; color: black !important; }
-                    .text-white { color: black !important; }
-                    .text-white/40, .text-white/50, .text-white/70 { color: #555 !important; }
-                    .bg-dark, .bg-dark-surface, .bg-white/5 { background: white !important; }
-                    .border-white/10 { border-color: #eee !important; }
-                    .text-primary { color: #000 !important; font-weight: bold !important; text-decoration: underline; }
+                    .print-header {
+                        display: flex !important;
+                        align-items: center !important;
+                        justify-content: space-between !important;
+                        padding: 40px 60px !important;
+                        background: #000 !important;
+                        color: white !important;
+                        margin-bottom: 30px !important;
+                    }
+                    .print-logo-container {
+                        display: flex !important;
+                        align-items: center !important;
+                        gap: 15px !important;
+                    }
+                    .brand-name {
+                        font-size: 24px !important;
+                        font-weight: 800 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 2px !important;
+                    }
+                    .brand-tagline {
+                        font-size: 10px !important;
+                        opacity: 0.6 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1px !important;
+                    }
+                    .print-container { 
+                        margin: 0 60px !important;
+                        padding: 30px !important; 
+                        border: 1px solid #000 !important; 
+                        border-radius: 20px !important; 
+                        background: white !important;
+                        margin-bottom: 20px !important;
+                    }
+                    .print-bg-fix { 
+                        background-color: #f8f8f8 !important; 
+                        border: 1px solid #eee !important; 
+                        padding: 20px !important; 
+                        color: black !important;
+                        border-radius: 15px !important;
+                    }
+                    .workout-title {
+                        font-size: 28px !important;
+                        font-weight: 800 !important;
+                        margin-bottom: 10px !important;
+                        color: #000 !important;
+                    }
+                    .workout-meta {
+                        display: flex !important;
+                        gap: 15px !important;
+                        font-size: 12px !important;
+                        font-weight: 600 !important;
+                        color: #666 !important;
+                        margin-bottom: 20px !important;
+                    }
+                    .section-label {
+                        font-size: 11px !important;
+                        font-weight: 800 !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1.5px !important;
+                        color: #999 !important;
+                        margin-bottom: 15px !important;
+                    }
+                    .print-footer {
+                        display: block !important;
+                        position: fixed !important;
+                        bottom: 0 !important;
+                        width: 100% !important;
+                        padding: 30px 60px !important;
+                        border-top: 1px solid #eee !important;
+                        font-size: 10px !important;
+                        color: #999 !important;
+                        text-align: center !important;
+                    }
+                    .text-primary { color: #ccff00 !important; -webkit-print-color-adjust: exact; }
                 }
                 `}
             </style>
@@ -397,16 +474,36 @@ Gere o seu em: artemisfit.online
                                     </button>
                                 </div>
 
-                                <div className="hidden print-only text-center mb-10 pb-6 border-b">
-                                    <h1 className="text-3xl font-bold">Artemis Fit - Treino Personalizado</h1>
-                                    <p className="text-sm">Foco: {focus} | Nível: {level} | Local: {local}</p>
+                                <div className="hidden print-only print-header">
+                                    <div className="print-logo-container">
+                                        <img src="/logo.png" alt="Artemis Fit" className="w-12 h-12" />
+                                        <div>
+                                            <div className="brand-name">Artemis <span className="text-primary italic">Fit</span></div>
+                                            <div className="brand-tagline">Inteligência Fisionômica Feminina</div>
+                                        </div>
+                                    </div>
+                                    <div className="text-right">
+                                        <div className="text-[10px] uppercase font-bold tracking-widest opacity-60">Treino Gerado em</div>
+                                        <div className="text-sm font-bold">{new Date().toLocaleDateString('pt-BR')}</div>
+                                    </div>
+                                </div>
+
+                                <div className="hidden print-only" style={{ margin: '0 60px 30px 60px' }}>
+                                    <h1 className="workout-title">Plano de Treino <span className="text-primary italic">Personalizado</span></h1>
+                                    <div className="workout-meta">
+                                        <span>Foco: {focus}</span>
+                                        <span>•</span>
+                                        <span>Nível: {level}</span>
+                                        <span>•</span>
+                                        <span>Local: {local}</span>
+                                    </div>
                                 </div>
 
                                 {/* ========== FULL WORKOUT (after email unlock) ========== */}
 
                                 {/* Warm-up */}
                                 <div className="bg-dark-surface border border-white/10 rounded-[2rem] p-6 mb-4 shadow-xl print-container">
-                                    <h3 className="text-sm font-bold uppercase tracking-widest text-white/40 mb-4 flex items-center gap-2">
+                                    <h3 className="section-label mb-4 flex items-center gap-2">
                                         <Heart size={14} className="text-red-400 no-print" /> Aquecimento ({warmUp.length} exercícios)
                                     </h3>
                                     <div className="space-y-2">
@@ -421,7 +518,7 @@ Gere o seu em: artemisfit.online
 
                                 {/* Main Workout */}
                                 <div className="bg-dark-surface border border-white/10 rounded-[2rem] p-6 mb-4 shadow-xl print-container">
-                                    <h3 className="text-sm font-bold uppercase tracking-widest text-white/40 mb-4 flex items-center gap-2">
+                                    <h3 className="section-label mb-4 flex items-center gap-2">
                                         <Dumbbell size={14} className="text-primary no-print" /> Treino Principal
                                     </h3>
                                     <div className="space-y-4">
@@ -460,7 +557,7 @@ Gere o seu em: artemisfit.online
 
                                 {/* Cool-down */}
                                 <div className="bg-dark-surface border border-white/10 rounded-[2rem] p-6 mb-6 shadow-xl print-container">
-                                    <h3 className="text-sm font-bold uppercase tracking-widest text-white/40 mb-4 flex items-center gap-2">
+                                    <h3 className="section-label mb-4 flex items-center gap-2">
                                         <Activity size={14} className="text-blue-400 no-print" /> Desaquecimento
                                     </h3>
                                     <div className="space-y-2">
@@ -499,6 +596,11 @@ Gere o seu em: artemisfit.online
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div className="hidden print-only print-footer">
+                                <div className="mb-2 font-bold text-black opacity-80">Este é um plano de treino estático. Para progredir de forma segura e eficiente, use a periodização inteligente do Artemis Fit.</div>
+                                <div>artemisfit.online • © {new Date().getFullYear()} Artemis Fit - Todos os direitos reservados</div>
                             </div>
                         </motion.div>
                     )}

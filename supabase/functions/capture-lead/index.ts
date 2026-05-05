@@ -34,32 +34,47 @@ Deno.serve(async (req: Request) => {
     }
 
     // Initialize Supabase client with service role key
-    const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
-    const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const supabaseServiceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    const resendApiKey = Deno.env.get("RESEND_API_KEY");
+
+    if (!supabaseUrl || !supabaseServiceKey) {
+      console.error("Missing Supabase environment variables");
+      return new Response(
+        JSON.stringify({ error: "Configuração do servidor incompleta (DB)" }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     // Upsert lead into database
+    console.log(`Tentando salvar lead: ${email}`);
     const upsertData: Record<string, unknown> = {
       email: email.toLowerCase().trim(),
       source_tool,
+      updated_at: new Date().toISOString(),
     };
     if (name) upsertData.name = name;
     if (tool_results) upsertData.tool_results = tool_results;
     if (quiz_data) upsertData.quiz_data = quiz_data;
 
-    const { error: dbError } = await supabase
+    const { data: dbData, error: dbError } = await supabase
       .from("leads")
-      .upsert(upsertData, { onConflict: "email" });
+      .upsert(upsertData, { onConflict: "email" })
+      .select();
 
     if (dbError) {
-      console.error("Database error:", dbError);
-      // Don't fail the request if DB insert fails
+      console.error("Database error during upsert:", dbError);
+      // We continue to email even if DB fails, but we log the error
+    } else {
+      console.log("Lead salvo com sucesso no banco:", dbData?.[0]?.id);
     }
 
     // Send email via Resend
-    const resendApiKey = Deno.env.get("RESEND_API_KEY");
     if (resendApiKey) {
       try {
+        console.log("Iniciando envio de e-mail via Resend...");
         const userName = name || "Guerreira";
 
         // Context-aware content and REDIRECTION based on source_tool

@@ -1,8 +1,9 @@
 import { useState, useCallback, useEffect } from 'react';
+import { supabaseUrl, supabaseKey } from '../supabaseClient';
 
 const STORAGE_KEY = 'artemis_lead_email';
 const STORAGE_NAME_KEY = 'artemis_lead_name';
-const EDGE_FUNCTION_URL = 'https://nyytfhdsybxoovxmeffr.supabase.co/functions/v1/capture-lead';
+const EDGE_FUNCTION_URL = `${supabaseUrl}/functions/v1/capture-lead`;
 
 interface CapturePayload {
   email: string;
@@ -43,10 +44,14 @@ export const useLeadCapture = (): UseLeadCaptureReturn => {
     setError(null);
 
     try {
+      console.info('Capturando lead:', payload.email, 'via', payload.sourceTool);
+      
       const response = await fetch(EDGE_FUNCTION_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'apikey': supabaseKey,
+          'Authorization': `Bearer ${supabaseKey}`
         },
         body: JSON.stringify({
           email: payload.email,
@@ -58,8 +63,12 @@ export const useLeadCapture = (): UseLeadCaptureReturn => {
 
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({}));
+        console.error('Falha na resposta da Edge Function:', response.status, errorData);
         throw new Error(errorData.message || 'Erro ao processar sua solicitação');
       }
+
+      const result = await response.json();
+      console.info('Lead capturado com sucesso:', result);
 
       // Success: save to localStorage and unlock
       localStorage.setItem(STORAGE_KEY, payload.email);
