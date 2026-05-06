@@ -45,8 +45,8 @@ function App() {
         <Route path="/guia/calculadora-proteina" element={<ProteinCalculator />} />
         <Route path="/guia/diagnostico-treino" element={<TrainingDiagnostic />} />
         <Route path="/guia/dicas/:slug" element={<GuideTip />} />
-        <Route path="/guia/artigo/:slug" element={<GuideReader />} />
         <Route path="/guia/seu-guia" element={<InteractiveGuide />} />
+        <Route path="/guia/:slug" element={<GuideReader />} />
 
         {/* Legacy redirects */}
         <Route path="/ferramentas" element={<ToolsHub />} />

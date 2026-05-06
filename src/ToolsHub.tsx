@@ -138,8 +138,8 @@ export const ToolsHub = () => {
   return (
     <div className="min-h-screen bg-dark text-white font-sans pb-20">
       <SEOHead
-        title="Guias e Ferramentas | Artemis Fit"
-        description="Acesse calculadoras, geradores de treino e guias baseados em ciência para otimizar seu corpo e treino."
+        title="Guia Artemis — Treino Feminino, Ciclo Menstrual e Nutrição"
+        description="Ferramentas gratuitas e artigos científicos sobre treino feminino, ciclo menstrual e nutrição. Feito para mulheres que treinam com inteligência."
         canonicalUrl="https://artemisfit.online/guia"
       />
 
@@ -325,7 +325,7 @@ export const ToolsHub = () => {
                             filteredGuides.map((guide) => (
                                 <Link 
                                     key={guide.id} 
-                                    to={`/guia/artigo/${guide.slug}`} 
+                                    to={`/guia/${guide.slug}`} 
                                     className="group flex flex-col"
                                 >
                                     <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden mb-6 border border-white/5 relative bg-white/5">

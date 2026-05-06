@@ -940,9 +940,21 @@ export default function Landing() {
   return (
     <div className="bg-dark min-h-screen selection:bg-primary selection:text-dark">
       <SEOHead
-          title="Artemis Fit | Inteligência em Performance Feminina"
-          description="O Artemis Fit é o primeiro sistema de performance inteligente desenhado para a biologia feminina. Treino e nutrição adaptados ao seu ciclo menstrual e desempenho."
+          title="Artemis Fit — App de Treino Feminino com IA e Ciclo Menstrual"
+          description="Treine de acordo com seu ciclo menstrual. IA que adapta seus treinos à sua biologia. Experimente grátis por 7 dias."
           canonicalUrl="https://artemisfit.online/"
+          schema={{
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Artemis Fit",
+            "url": "https://artemisfit.online/",
+            "description": "Sistema de performance feminina inteligente adaptado ao ciclo menstrual.",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://artemisfit.online/guia?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          }}
       />
       <Navbar />
       <FloatingCTA />

@@ -278,6 +278,15 @@ export const TrainingDiagnostic = () => {
                 title="Teste de Potencial Muscular Feminino | Artemis Fit"
                 description="Faça o teste de 8 perguntas e descubra o que está limitando sua evolução muscular e como corrigir. Diagnóstico gratuito."
                 canonicalUrl="https://artemisfit.online/guia/diagnostico-treino"
+                schema={{
+                    "@context": "https://schema.org",
+                    "@type": "WebApplication",
+                    "name": "Diagnóstico de Treino Artemis",
+                    "applicationCategory": "HealthApplication",
+                    "operatingSystem": "All",
+                    "description": "Descubra o que está limitando sua evolução muscular e como corrigir com este teste de 8 perguntas.",
+                    "url": "https://artemisfit.online/guia/diagnostico-treino"
+                }}
             />
 
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between sticky top-0 z-40">

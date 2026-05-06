@@ -124,6 +124,15 @@ export const ProteinCalculator = () => {
                 title="Calculadora de Proteína para Mulheres | Artemis Fit"
                 description="Calcule suas cotas ideais de proteína por refeição considerando a fisiologia feminina e janela anabólica. Ferramenta gratuita."
                 canonicalUrl="https://artemisfit.online/guia/calculadora-proteina"
+                schema={{
+                    "@context": "https://schema.org",
+                    "@type": "WebApplication",
+                    "name": "Calculadora de Proteína Artemis",
+                    "applicationCategory": "HealthApplication",
+                    "operatingSystem": "All",
+                    "description": "Calcule suas cotas ideais de proteína por refeição considerando a fisiologia feminina e janela anabólica.",
+                    "url": "https://artemisfit.online/guia/calculadora-proteina"
+                }}
             />
 
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between sticky top-0 z-40">

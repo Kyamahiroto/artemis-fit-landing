@@ -88,7 +88,29 @@ export const GuideReader = () => {
       <SEOHead
         title={`${guide.title} | Artemis Fit`}
         description={guide.subtitle || `Leia sobre ${guide.title}. Otimize seus treinos e alinhe-os ao seu ciclo.`}
-        canonicalUrl={`https://artemisfit.online/guia/artigo/${slug}`}
+        canonicalUrl={`https://artemisfit.online/guia/${slug}`}
+        image={guide.image_url}
+        type="article"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": guide.title,
+          "description": guide.subtitle,
+          "image": guide.image_url,
+          "author": {
+            "@type": "Organization",
+            "name": "Artemis Fit"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Artemis Fit",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://artemisfit.online/logo.png"
+            }
+          },
+          "datePublished": guide.created_at
+        }}
       />
 
       {/* Hero Header Contextual */}
@@ -222,7 +244,7 @@ export const GuideReader = () => {
                     </h4>
                     <div className="space-y-6">
                         {recentGuides.map((rg, i) => (
-                            <Link key={rg.id} to={`/guia/artigo/${rg.slug}`} className="flex items-center gap-4 group">
+                            <Link key={rg.id} to={`/guia/${rg.slug}`} className="flex items-center gap-4 group">
                                 <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-white/5">
                                     {rg.image_url ? (
                                         <img src={rg.image_url} alt={rg.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
@@ -264,7 +286,7 @@ export const GuideReader = () => {
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {recentGuides.slice(0, 4).map((rg) => (
-                    <Link key={rg.id} to={`/guia/artigo/${rg.slug}`} className="group block">
+                    <Link key={rg.id} to={`/guia/${rg.slug}`} className="group block">
                         <div className="aspect-[4/5] rounded-[2rem] overflow-hidden mb-4 border border-white/5 bg-white/5">
                             {rg.image_url && <img src={rg.image_url} alt={rg.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />}
                         </div>
