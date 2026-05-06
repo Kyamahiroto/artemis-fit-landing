@@ -112,7 +112,7 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-3 transition-all duration-300 ${scrolled ? 'py-2 bg-dark/95 backdrop-blur-lg border-b border-white/10' : 'py-4 bg-dark/80 backdrop-blur-md border-b border-white/5'} md:px-12 md:py-6`}>
       <div className="flex items-center gap-1 sm:gap-4 shrink-0">
-        <img src="/logo.png" alt="Artemis Fit Pro Logo" className={`transition-all duration-300 ${scrolled ? 'h-6 sm:h-7 md:h-10' : 'h-8 sm:h-10 md:h-16'} w-auto`} />
+        <img src="/logo.png" alt="Artemis Fit Pro Logo" className={`transition-all duration-300 ${scrolled ? 'h-6 sm:h-7 md:h-10' : 'h-7 sm:h-9 md:h-12'} w-auto`} />
       </div>
       <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/60">
         <a href="#features" className="hover:text-primary transition-colors">Tecnologia</a>
@@ -895,7 +895,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-4 gap-12 mb-20">
         <div className="col-span-2">
           <div className="mb-6">
-            <img src="/logo.png" alt="Artemis Fit Pro Logo" className="h-14 w-auto" />
+            <img src="/logo.png" alt="Artemis Fit Pro Logo" className="h-10 w-auto" />
           </div>
           <p className="text-white/40 max-w-sm leading-relaxed">
             O primeiro sistema de performance inteligente desenhado exclusivamente para a biologia feminina.
