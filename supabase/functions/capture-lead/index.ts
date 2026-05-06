@@ -166,17 +166,17 @@ Deno.serve(async (req: Request) => {
     <div style="background-color:#141414;border:1px solid rgba(205,255,0,0.15);border-radius:24px;padding:24px;text-align:center;margin-bottom:24px;">
       <p style="color:rgba(255,255,255,0.6);font-size:13px;margin:0 0 16px 0;">
         Quer que tudo isso funcione <strong style="color:#ffffff;">automaticamente</strong>?<br>
-        O Artemis Fit adapta treino + nutrição ao seu ciclo com IA.
+        O Artemis Fit Pro adapta treino + nutrição ao seu ciclo com IA.
       </p>
       <a href="https://app.artemisfit.online" style="display:inline-block;padding:12px 24px;background-color:rgba(205,255,0,0.1);border:1px solid rgba(205,255,0,0.3);color:#CDFF00;border-radius:100px;font-weight:bold;font-size:13px;text-decoration:none;">
-        Conhecer o Artemis Fit →
+        Conhecer o Artemis Fit Pro →
       </a>
     </div>
 
     <!-- Footer -->
     <div style="text-align:center;padding:20px 0;">
       <p style="color:rgba(255,255,255,0.2);font-size:11px;margin:0;">
-        © ${new Date().getFullYear()} Artemis Fit · 
+        © ${new Date().getFullYear()} Artemis Fit Pro · 
         <a href="https://artemisfit.online/privacidade" style="color:rgba(255,255,255,0.3);text-decoration:underline;">Privacidade</a>
       </p>
       <p style="color:rgba(255,255,255,0.15);font-size:10px;margin:8px 0 0 0;">
@@ -195,7 +195,7 @@ Deno.serve(async (req: Request) => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            from: "Artemis Fit <guia@app.artemisfit.online>",
+            from: "Artemis Fit Pro <guia@app.artemisfit.online>",
             to: [email],
             subject: `${userName}, seu Guia de Treino + Ciclo está pronto! ⚡`,
             html: emailHtml,

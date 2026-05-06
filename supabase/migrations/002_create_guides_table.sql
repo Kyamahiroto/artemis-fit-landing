@@ -1,5 +1,5 @@
 -- ===================================================================
--- ARTEMIS FIT - GUIDES TABLE MIGRATION
+-- Artemis Fit Pro - GUIDES TABLE MIGRATION
 -- Run this in the Supabase SQL Editor (Dashboard > SQL Editor)
 -- ===================================================================
 

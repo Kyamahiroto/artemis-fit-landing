@@ -19,7 +19,7 @@ export const guideTips: GuideTipData[] = [
             "A estratégia ideal é manter os exercícios compostos (agachamento, leg press, elevação pélvica) mas reduzir o volume total em 15-20%. Ao invés de 4 séries de 10, faça 3 séries de 8-10 com foco em tempo sob tensão. A hipertrofia nessa fase responde melhor a estímulos mecânicos controlados do que a volumes brutais. Também vale investir mais em aquecimento articular, já que a progesterona afeta a frouxidão ligamentar.",
             "O erro mais comum é ignorar completamente essas mudanças e forçar a mesma planilha de sempre. Quando o corpo não responde ao volume habitual, muitas mulheres acham que estão 'regredindo' — quando na verdade é o ciclo natural. Adaptar o treino à fase hormonal não é treinar menos, é treinar com inteligência."
         ],
-        cta: "O Artemis Fit ajusta automaticamente volume e intensidade baseado na sua fase. Zero achismo.",
+        cta: "O Artemis Fit Pro ajusta automaticamente volume e intensidade baseado na sua fase. Zero achismo.",
         keywords: ["treino fase lútea", "treino pernas ciclo menstrual", "adaptar treino ciclo"]
     },
     {

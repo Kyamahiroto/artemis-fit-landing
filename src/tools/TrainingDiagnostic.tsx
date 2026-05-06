@@ -275,7 +275,7 @@ export const TrainingDiagnostic = () => {
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark pb-32">
             <SEOHead
-                title="Teste de Potencial Muscular Feminino | Artemis Fit"
+                title="Teste de Potencial Muscular Feminino | Artemis Fit Pro"
                 description="Faça o teste de 8 perguntas e descubra o que está limitando sua evolução muscular e como corrigir. Diagnóstico gratuito."
                 canonicalUrl="https://artemisfit.online/guia/diagnostico-treino"
                 schema={{

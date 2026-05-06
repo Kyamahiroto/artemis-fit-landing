@@ -22,7 +22,7 @@ export const GuideTip = () => {
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark pb-32">
             <SEOHead
-                title={`${tip.title} | Artemis Fit`}
+                title={`${tip.title} | Artemis Fit Pro`}
                 description={tip.paragraphs[0].substring(0, 155) + '...'}
                 canonicalUrl={`https://artemisfit.online/guia/dicas/${tip.slug}`}
             />
@@ -79,7 +79,7 @@ export const GuideTip = () => {
                     <div className="p-8 bg-primary/5 border border-primary/20 rounded-[2rem] text-center">
                         <h2 className="text-2xl font-bold mb-4 font-display">{tip.cta}</h2>
                         <a href="https://app.artemisfit.online" className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-dark rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_0_20px_-5px_rgba(205,255,0,0.4)]">
-                            <Zap size={18} /> Conhecer o Artemis Fit
+                            <Zap size={18} /> Conhecer o Artemis Fit Pro
                         </a>
                     </div>
 
@@ -110,8 +110,8 @@ export const GuideTip = () => {
                         "@type": "Article",
                         "headline": tip.title,
                         "description": tip.paragraphs[0].substring(0, 155),
-                        "author": { "@type": "Organization", "name": "Artemis Fit" },
-                        "publisher": { "@type": "Organization", "name": "Artemis Fit" },
+                        "author": { "@type": "Organization", "name": "Artemis Fit Pro" },
+                        "publisher": { "@type": "Organization", "name": "Artemis Fit Pro" },
                         "mainEntityOfPage": `https://artemisfit.online/guia/dicas/${tip.slug}`
                     })
                 }}

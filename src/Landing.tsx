@@ -112,7 +112,7 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-3 transition-all duration-300 ${scrolled ? 'py-2 bg-dark/95 backdrop-blur-lg border-b border-white/10' : 'py-4 bg-dark/80 backdrop-blur-md border-b border-white/5'} md:px-12 md:py-6`}>
       <div className="flex items-center gap-1 sm:gap-4 shrink-0">
-        <img src="/logo.png" alt="Artemis Fit Logo" className={`transition-all duration-300 ${scrolled ? 'h-6 sm:h-7 md:h-10' : 'h-8 sm:h-10 md:h-16'} w-auto`} />
+        <img src="/logo.png" alt="Artemis Fit Pro Logo" className={`transition-all duration-300 ${scrolled ? 'h-6 sm:h-7 md:h-10' : 'h-8 sm:h-10 md:h-16'} w-auto`} />
       </div>
       <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/60">
         <a href="#features" className="hover:text-primary transition-colors">Tecnologia</a>
@@ -218,7 +218,7 @@ const Hero = () => (
       <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
         <img
           src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=1974&auto=format&fit=crop"
-          alt="Mulher treinando força muscular focada em alta performance com o método adaptado Artemis Fit"
+          alt="Mulher treinando força muscular focada em alta performance com o método adaptado Artemis Fit Pro"
           className="w-full h-full object-cover opacity-60"
           referrerPolicy="no-referrer"
         />
@@ -869,7 +869,7 @@ const VisualProof = () => (
             <div className="w-full mx-auto mb-8 transition-transform duration-700 group-hover:scale-[1.03]">
               <img
                 src={item.img}
-                alt={`Captura detalhada do módulo ${item.title} no aplicativo Artemis Fit - Treino inteligente com inteligência artificial para mulheres`}
+                alt={`Captura detalhada do módulo ${item.title} no aplicativo Artemis Fit Pro - Treino inteligente com inteligência artificial para mulheres`}
                 loading="lazy"
                 className="w-full aspect-[9/19] object-cover object-top drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] rounded-[2.2rem] border border-white/10"
                 referrerPolicy="no-referrer"
@@ -895,7 +895,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-4 gap-12 mb-20">
         <div className="col-span-2">
           <div className="mb-6">
-            <img src="/logo.png" alt="Artemis Fit Logo" className="h-14 w-auto" />
+            <img src="/logo.png" alt="Artemis Fit Pro Logo" className="h-14 w-auto" />
           </div>
           <p className="text-white/40 max-w-sm leading-relaxed">
             O primeiro sistema de performance inteligente desenhado exclusivamente para a biologia feminina.
@@ -919,7 +919,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-12 border-t border-white/5 text-white/20 text-xs uppercase tracking-widest font-bold">
-        <div>© 2026 Artemis Fit. Todos os direitos reservados.</div>
+        <div>© 2026 Artemis Fit Pro. Todos os direitos reservados.</div>
         <a
           href="https://instagram.com"
           target="_blank"
@@ -940,13 +940,13 @@ export default function Landing() {
   return (
     <div className="bg-dark min-h-screen selection:bg-primary selection:text-dark">
       <SEOHead
-          title="Artemis Fit — App de Treino Feminino com IA e Ciclo Menstrual"
+          title="Artemis Fit Pro — App de Treino Feminino com IA e Ciclo Menstrual"
           description="Treine de acordo com seu ciclo menstrual. IA que adapta seus treinos à sua biologia. Experimente grátis por 7 dias."
           canonicalUrl="https://artemisfit.online/"
           schema={{
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "Artemis Fit",
+            "name": "Artemis Fit Pro",
             "url": "https://artemisfit.online/",
             "description": "Sistema de performance feminina inteligente adaptado ao ciclo menstrual.",
             "potentialAction": {

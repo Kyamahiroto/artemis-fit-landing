@@ -207,7 +207,7 @@ export const CycleCalculator = () => {
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark">
             <SEOHead
-                title="Calculadora de Ciclo Menstrual e Treino Grátis — Artemis Fit"
+                title="Calculadora de Ciclo Menstrual e Treino Grátis — Artemis Fit Pro"
                 description="Descubra em que fase do ciclo você está e o que treinar hoje. Painel hormonal completo e recomendações personalizadas."
                 canonicalUrl="https://artemisfit.online/guia/ciclo-e-treino"
                 schema={{

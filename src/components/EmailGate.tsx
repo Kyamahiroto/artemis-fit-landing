@@ -188,7 +188,7 @@ export const EmailGate: React.FC<EmailGateProps> = ({
                       />
                     </div>
                     <span className="text-[10px] text-white/30 leading-snug group-hover:text-white/50 transition-colors">
-                      Aceito receber dicas de bio-hack e novidades do Artemis Fit. Prometo que será útil ou você sai com um clique.
+                      Aceito receber dicas de bio-hack e novidades do Artemis Fit Pro. Prometo que será útil ou você sai com um clique.
                     </span>
                   </label>
 

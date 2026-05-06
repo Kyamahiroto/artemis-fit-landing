@@ -22,6 +22,6 @@ export const Cookies = () => (
         <p>Podemos utilizar serviços analíticos de terceiros (como Vercel Analytics ou equivalentes) para obter dados agregados de uso, que são mantidos de forma anônima.</p>
 
         <h2>5. Como Controlar os Cookies</h2>
-        <p>Você pode configurar o seu navegador para recusar cookies. No entanto, lembre-se de que muitas funcionalidades cruciais da Artemis Fit podem não funcionar corretamente sem eles.</p>
+        <p>Você pode configurar o seu navegador para recusar cookies. No entanto, lembre-se de que muitas funcionalidades cruciais da Artemis Fit Pro podem não funcionar corretamente sem eles.</p>
     </LegalLayout>
 );

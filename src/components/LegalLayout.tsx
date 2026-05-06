@@ -12,7 +12,7 @@ interface LegalLayoutProps {
 export const LegalLayout = ({ title, description, canonicalUrl, children }: LegalLayoutProps) => (
     <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark">
         <SEOHead
-            title={`${title} | Artemis Fit`}
+            title={`${title} | Artemis Fit Pro`}
             description={description}
             canonicalUrl={canonicalUrl}
         />
@@ -21,7 +21,7 @@ export const LegalLayout = ({ title, description, canonicalUrl, children }: Lega
             <a href="/" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
                 <ArrowLeft size={16} /> Voltar
             </a>
-            <img src="/logo.png" alt="Artemis Fit Logo" className="h-10 w-auto" />
+            <img src="/logo.png" alt="Artemis Fit Pro Logo" className="h-10 w-auto" />
         </nav>
 
         <main className="max-w-4xl mx-auto pt-40 pb-32 px-6">
@@ -34,7 +34,7 @@ export const LegalLayout = ({ title, description, canonicalUrl, children }: Lega
         </main>
 
         <footer className="py-12 border-t border-white/5 text-center text-[10px] text-white/20 font-bold uppercase tracking-widest">
-            © 2026 Artemis Fit. Todos os direitos reservados.
+            © 2026 Artemis Fit Pro. Todos os direitos reservados.
         </footer>
     </div>
 );

@@ -46,7 +46,7 @@ export const Technology = () => {
                 <a href="/" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
                     <ArrowLeft size={16} /> Voltar
                 </a>
-                <img src="/logo.png" alt="Artemis Fit Logo" className="h-10 w-auto" />
+                <img src="/logo.png" alt="Artemis Fit Pro Logo" className="h-10 w-auto" />
             </nav>
 
             {/* Hero */}
@@ -221,7 +221,7 @@ export const Technology = () => {
             </section>
 
             <footer className="py-12 border-t border-white/5 text-center text-[10px] text-white/20 font-bold uppercase tracking-widest">
-                © 2026 Artemis Fit. Todos os direitos reservados.
+                © 2026 Artemis Fit Pro. Todos os direitos reservados.
             </footer>
         </div>
     );

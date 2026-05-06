@@ -1,5 +1,5 @@
 -- ===================================================================
--- ARTEMIS FIT - SETUP COMPLETO (LEADS + GUÍAS)
+-- Artemis Fit Pro - SETUP COMPLETO (LEADS + GUÍAS)
 -- Cole e rode este arquivo inteiro no SQL Editor do Supabase
 -- ===================================================================
 

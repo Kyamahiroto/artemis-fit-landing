@@ -191,7 +191,7 @@ const QuizSection: React.FC = () => {
   const getPersonalizedTip = () => {
     const challenge = answers['biggest_challenge'];
     const tips: Record<string, string> = {
-      consistency: 'Consistência vem de sistemas, não de motivação. O Artemis Fit cria rotinas automáticas que se adaptam à SUA vida e ao seu ciclo.',
+      consistency: 'Consistência vem de sistemas, não de motivação. O Artemis Fit Pro cria rotinas automáticas que se adaptam à SUA vida e ao seu ciclo.',
       progress: 'Sem métricas de progresso, é impossível saber se você está evoluindo. Rastreamento de cargas, medidas e performance é essencial.',
       pain: 'Dor pode ser sinal de técnica incorreta, overtraining ou treino na fase errada do ciclo. Uma IA que adapta o treino à sua biologia resolve isso.',
       nutrition: 'Suas necessidades nutricionais mudam ao longo do ciclo. Cotas fixas não funcionam para o corpo feminino.',
@@ -282,7 +282,7 @@ const QuizSection: React.FC = () => {
               href="https://app.artemisfit.online"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-dark rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_0_30px_-5px_rgba(205,255,0,0.4)]"
             >
-              <Zap size={18} /> Experimentar o Artemis Fit Agora
+              <Zap size={18} /> Experimentar o Artemis Fit Pro Agora
             </a>
           </motion.div>
         )}
@@ -423,7 +423,7 @@ export const InteractiveGuide = () => {
   return (
     <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark">
       <SEOHead
-        title="Guia Interativo de Treino e Ciclo Menstrual | Artemis Fit"
+        title="Guia Interativo de Treino e Ciclo Menstrual | Artemis Fit Pro"
         description="Guia completo e interativo sobre como adaptar seu treino ao ciclo menstrual. Fases, nutrição, mitos, FAQ e quiz personalizado. Grátis."
         canonicalUrl="https://artemisfit.online/guia/seu-guia"
       />
@@ -631,14 +631,14 @@ export const InteractiveGuide = () => {
               </h2>
 
               <p className="text-white/50 max-w-lg mx-auto mb-8">
-                O Artemis Fit automatiza toda essa ciência para você em tempo real, todos os dias, com inteligência artificial.
+                O Artemis Fit Pro automatiza toda essa ciência para você em tempo real, todos os dias, com inteligência artificial.
               </p>
 
               <a
                 href="https://app.artemisfit.online"
                 className="inline-flex items-center gap-3 px-10 py-5 bg-primary text-dark rounded-full font-bold text-lg hover:scale-105 transition-transform shadow-[0_0_40px_-5px_rgba(205,255,0,0.5)]"
               >
-                <Zap size={22} /> Testar o Artemis Fit Grátis
+                <Zap size={22} /> Testar o Artemis Fit Pro Grátis
               </a>
 
               <p className="text-white/20 text-xs mt-6">Sem cartão. Sem compromisso. Cancele quando quiser.</p>
@@ -649,7 +649,7 @@ export const InteractiveGuide = () => {
 
       {/* Footer */}
       <footer className="py-10 px-6 text-center text-white/20 text-xs border-t border-white/5">
-        <p>© {new Date().getFullYear()} Artemis Fit. Todos os direitos reservados.</p>
+        <p>© {new Date().getFullYear()} Artemis Fit Pro. Todos os direitos reservados.</p>
         <div className="flex justify-center gap-4 mt-3">
           <Link to="/privacidade" className="hover:text-primary transition-colors">Privacidade</Link>
           <Link to="/termos" className="hover:text-primary transition-colors">Termos</Link>

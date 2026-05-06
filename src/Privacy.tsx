@@ -7,7 +7,7 @@ export const Privacy = () => (
         description="Esta política detalha como coletamos, usamos e protegemos as suas informações ao utilizar o nosso sistema de performance feminina inteligente."
         canonicalUrl="https://artemisfit.online/privacidade"
     >
-        <p>A sua privacidade é uma prioridade para a Artemis Fit. Esta política detalha como coletamos, usamos e protegemos as suas informações ao utilizar o nosso sistema de performance feminina inteligente.</p>
+        <p>A sua privacidade é uma prioridade para a Artemis Fit Pro. Esta política detalha como coletamos, usamos e protegemos as suas informações ao utilizar o nosso sistema de performance feminina inteligente.</p>
 
         <h2>1. Coleta de Informações</h2>
         <p>Coletamos informações que você nos fornece diretamente, como nome, e-mail e dados biométricos necessários para o funcionamento da nossa IA, incluindo idade, peso, rotina de treinos e informações sobre o seu ciclo menstrual.</p>

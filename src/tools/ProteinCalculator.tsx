@@ -121,7 +121,7 @@ export const ProteinCalculator = () => {
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark pb-32">
             <SEOHead
-                title="Calculadora de Proteína para Mulheres | Artemis Fit"
+                title="Calculadora de Proteína para Mulheres | Artemis Fit Pro"
                 description="Calcule suas cotas ideais de proteína por refeição considerando a fisiologia feminina e janela anabólica. Ferramenta gratuita."
                 canonicalUrl="https://artemisfit.online/guia/calculadora-proteina"
                 schema={{

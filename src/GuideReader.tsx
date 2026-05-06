@@ -86,7 +86,7 @@ export const GuideReader = () => {
   return (
     <div className="min-h-screen bg-dark text-white font-sans pb-32">
       <SEOHead
-        title={`${guide.title} | Artemis Fit`}
+        title={`${guide.title} | Artemis Fit Pro`}
         description={guide.subtitle || `Leia sobre ${guide.title}. Otimize seus treinos e alinhe-os ao seu ciclo.`}
         canonicalUrl={`https://artemisfit.online/guia/${slug}`}
         image={guide.image_url}
@@ -99,11 +99,11 @@ export const GuideReader = () => {
           "image": guide.image_url,
           "author": {
             "@type": "Organization",
-            "name": "Artemis Fit"
+            "name": "Artemis Fit Pro"
           },
           "publisher": {
             "@type": "Organization",
-            "name": "Artemis Fit",
+            "name": "Artemis Fit Pro",
             "logo": {
               "@type": "ImageObject",
               "url": "https://artemisfit.online/logo.png"
