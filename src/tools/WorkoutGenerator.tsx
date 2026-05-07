@@ -182,7 +182,7 @@ export const WorkoutGenerator = () => {
 
     const copyToClipboard = () => {
         const text = `
-TREINO Artemis Fit Pro - ${focus?.toUpperCase()} (${local})
+TREINO Artemis Fit App - ${focus?.toUpperCase()} (${local})
 Estimativa: ${estimatedCalories} kcal | Nível: ${level}
 
 AQUECIMENTO:
@@ -303,13 +303,13 @@ Gere o seu em: artemisfit.online
             </style>
             
             <SEOHead
-                title="Gerador de Treino Rápido para Mulheres | Artemis Fit Pro"
+                title="Gerador de Treino Rápido para Mulheres | Artemis Fit App"
                 description="Gere um treino de hipertrofia personalizado em segundos baseado no seu tempo, equipamento e nível. Ferramenta gratuita."
                 canonicalUrl="https://artemisfit.online/guia/gerador-de-treino"
                 schema={{
                     "@context": "https://schema.org",
                     "@type": "WebApplication",
-                    "name": "Gerador de Treino Artemis",
+                    "name": "Gerador de Treino Artemis Fit App",
                     "applicationCategory": "HealthApplication",
                     "operatingSystem": "All",
                     "description": "Gere um treino de hipertrofia personalizado em segundos baseado no seu tempo, equipamento e nível.",
@@ -319,7 +319,7 @@ Gere o seu em: artemisfit.online
 
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between sticky top-0 z-40 no-print">
                 <Link to="/guia" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
-                    <ArrowLeft size={16} /> Guia Artemis
+                    <ArrowLeft size={16} /> Guia Artemis Fit App
                 </Link>
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary/60 border border-primary/20 px-3 py-1 rounded-full">
                     <Zap size={12} /> Gerador
@@ -485,9 +485,9 @@ Gere o seu em: artemisfit.online
 
                                 <div className="hidden print-only print-header">
                                     <div className="print-logo-container">
-                                        <img src="/logo.png" alt="Artemis Fit Pro" className="w-12 h-12" />
+                                        <img src="/logo.png" alt="Artemis Fit App" className="w-12 h-12" />
                                         <div>
-                                            <div className="brand-name">Artemis <span className="text-primary italic">Fit</span></div>
+                                            <div className="brand-name">Artemis <span className="text-primary italic">Fit App</span></div>
                                             <div className="brand-tagline">Inteligência Fisionômica Feminina</div>
                                         </div>
                                     </div>
@@ -608,8 +608,8 @@ Gere o seu em: artemisfit.online
                             </div>
 
                             <div className="hidden print-only print-footer">
-                                <div className="mb-2 font-bold text-black opacity-80">Este é um plano de treino estático. Para progredir de forma segura e eficiente, use a periodização inteligente do Artemis Fit Pro.</div>
-                                <div>artemisfit.online • © {new Date().getFullYear()} Artemis Fit Pro - Todos os direitos reservados</div>
+                                <div className="mb-2 font-bold text-black opacity-80">Este é um plano de treino estático. Para progredir de forma segura e eficiente, use a periodização inteligente do Artemis Fit App.</div>
+                                <div>artemisfit.online • © {new Date().getFullYear()} Artemis Fit App - Todos os direitos reservados</div>
                             </div>
                         </motion.div>
                     )}

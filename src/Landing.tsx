@@ -112,11 +112,11 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-3 transition-all duration-300 ${scrolled ? 'py-2 bg-dark/95 backdrop-blur-lg border-b border-white/10' : 'py-4 bg-dark/80 backdrop-blur-md border-b border-white/5'} md:px-12 md:py-6`}>
       <div className="flex items-center gap-1 sm:gap-4 shrink-0">
-        <img src="/logo.png" alt="Artemis Fit Pro Logo" className={`transition-all duration-300 ${scrolled ? 'h-6 sm:h-7 md:h-10' : 'h-7 sm:h-9 md:h-12'} w-auto`} />
+        <img src="/logo.png" alt="Artemis Fit App Logo" className={`transition-all duration-300 ${scrolled ? 'h-6 sm:h-7 md:h-10' : 'h-7 sm:h-9 md:h-12'} w-auto`} />
       </div>
       <div className="hidden md:flex items-center gap-8 text-sm font-medium text-white/60">
         <a href="#features" className="hover:text-primary transition-colors">Tecnologia</a>
-        <a href="/guia" className="hover:text-primary transition-colors flex items-center gap-1"><Sparkles size={14} /> Guia Artemis</a>
+        <a href="/guia" className="hover:text-primary transition-colors flex items-center gap-1"><Sparkles size={14} /> Guia Artemis Fit App</a>
         <a href="#ecosystem" className="hover:text-primary transition-colors">Ecossistema</a>
         <a href="#final" className="hover:text-primary transition-colors">Beta</a>
       </div>
@@ -179,7 +179,7 @@ const Hero = () => (
         transition={{ duration: 0.6, delay: 0.2 }}
         className="text-base md:text-xl text-white/60 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed px-4"
       >
-        Seu corpo não é padrão. O Artemis adapta treinos, nutrição e evolução ao seu ciclo e desempenho real de forma inteligente.
+        Seu corpo não é padrão. O Artemis Fit App adapta treinos, nutrição e evolução ao seu ciclo e desempenho real de forma inteligente.
       </motion.p>
 
       <motion.div
@@ -218,7 +218,7 @@ const Hero = () => (
       <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
         <img
           src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=1974&auto=format&fit=crop"
-          alt="Mulher treinando força muscular focada em alta performance com o método adaptado Artemis Fit Pro"
+          alt="Mulher treinando força muscular focada em alta performance com o método adaptado Artemis Fit App"
           className="w-full h-full object-cover opacity-60"
           referrerPolicy="no-referrer"
         />
@@ -246,7 +246,7 @@ const Hero = () => (
                 <Brain className="text-primary w-5 h-5" />
               </div>
               <div>
-                <div className="text-sm font-bold">IA Artemis</div>
+                <div className="text-sm font-bold">IA Artemis Fit App</div>
                 <div className="text-[10px] text-white/40 uppercase">Recomendação de hoje</div>
               </div>
             </div>
@@ -265,7 +265,7 @@ const Testimonials = () => {
     {
       name: "Mariana",
       age: 29,
-      text: "Consegui manter consistência pela primeira vez em 2 anos. O Artemis entende quando estou cansada e quando posso dar meu máximo.",
+      text: "Consegui manter consistência pela primeira vez em 2 anos. O Artemis Fit App entende quando estou cansada e quando posso dar meu máximo.",
       img: "/testimonial_mariana.png",
       result: "Consistência de 6 meses"
     },
@@ -368,7 +368,7 @@ const BeforeAfterSlider = () => {
       >
         <img src="/after.png" alt="Depois" className="w-full h-full object-cover brightness-110 pointer-events-none" />
         <div className="absolute top-6 right-6 bg-primary px-4 py-2 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-widest text-dark shadow-[0_0_20px_rgba(205,255,0,0.3)] z-10 transition-opacity">
-          Com Artemis
+          Com Artemis Fit App
         </div>
       </div>
 
@@ -520,9 +520,9 @@ const Intelligence = () => (
     <div className="max-w-7xl mx-auto">
       <div className="text-center mb-16 md:mb-24">
         <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-6">A Lógica</h2>
-        <h3 className="text-[2.2rem] md:text-7xl font-bold font-display mb-8 leading-tight tracking-tight">Veja como o <span className="text-primary italic">Artemis pensa.</span></h3>
+        <h3 className="text-[2.2rem] md:text-7xl font-bold font-display mb-8 leading-tight tracking-tight">Veja como o <span className="text-primary italic">Artemis Fit App pensa.</span></h3>
         <p className="text-base md:text-lg text-white/40 max-w-2xl mx-auto px-4">
-          Diferente de apps que te dão uma lista estática, o Artemis reprograma o seu dia com base na sua biologia.
+          Diferente de apps que te dão uma lista estática, o Artemis Fit App reprograma o seu dia com base na sua biologia.
         </p>
       </div>
 
@@ -624,7 +624,7 @@ const SmartWorkout = () => {
             Seu treino não é fixo.<br /><span className="italic text-white/40">Ele evolui com você.</span>
           </h3>
           <p className="text-base md:text-xl text-white/50 max-w-2xl mx-auto px-4">
-            O Artemis cria seu treino com base no seu nível, objetivo e realidade — e ajusta automaticamente conforme seu desempenho.
+            O Artemis Fit App cria seu treino com base no seu nível, objetivo e realidade — e ajusta automaticamente conforme seu desempenho.
           </p>
         </div>
 
@@ -789,7 +789,7 @@ const AIExperience = () => (
           >
             <div className="flex items-center gap-2 mb-2">
               <Brain size={16} />
-              <span className="text-xs font-bold uppercase tracking-tighter">Artemis AI</span>
+              <span className="text-xs font-bold uppercase tracking-tighter">Artemis Fit App AI</span>
             </div>
             <p className="text-sm">"Fase lútea detectada. Sua temperatura basal subiu. Reduza a intensidade e foque em volume moderado. Priorize magnésio na ceia hoje."</p>
           </motion.div>
@@ -807,7 +807,7 @@ const AIExperience = () => (
           >
             <div className="flex items-center gap-2 mb-2">
               <Brain size={16} />
-              <span className="text-xs font-bold uppercase tracking-tighter">Artemis AI</span>
+              <span className="text-xs font-bold uppercase tracking-tighter">Artemis Fit App AI</span>
             </div>
             <p className="text-sm">"Seu progresso está sendo limitado pela baixa ingestão de proteína nos últimos 4 dias. Ajuste para 1.8g/kg para recuperar as fibras."</p>
           </motion.div>
@@ -820,7 +820,7 @@ const AIExperience = () => (
           Um treinador que <span className="text-primary italic">fala a sua língua.</span>
         </h3>
         <p className="text-base md:text-lg text-white/60 mb-10">
-          O Artemis não apenas cospe dados. Ele interpreta o que está acontecendo com você e oferece ações práticas e imediatas.
+          O Artemis Fit App não apenas cospe dados. Ele interpreta o que está acontecendo com você e oferece ações práticas e imediatas.
         </p>
         <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/5 border border-white/10">
           <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary">
@@ -869,7 +869,7 @@ const VisualProof = () => (
             <div className="w-full mx-auto mb-8 transition-transform duration-700 group-hover:scale-[1.03]">
               <img
                 src={item.img}
-                alt={`Captura detalhada do módulo ${item.title} no aplicativo Artemis Fit Pro - Treino inteligente com inteligência artificial para mulheres`}
+                alt={`Captura detalhada do módulo ${item.title} no aplicativo Artemis Fit App - Treino inteligente com inteligência artificial para mulheres`}
                 loading="lazy"
                 className="w-full aspect-[9/19] object-cover object-top drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] rounded-[2.2rem] border border-white/10"
                 referrerPolicy="no-referrer"
@@ -895,7 +895,7 @@ const Footer = () => (
       <div className="grid md:grid-cols-4 gap-12 mb-20">
         <div className="col-span-2">
           <div className="mb-6">
-            <img src="/logo.png" alt="Artemis Fit Pro Logo" className="h-10 w-auto" />
+            <img src="/logo.png" alt="Artemis Fit App Logo" className="h-10 w-auto" />
           </div>
           <p className="text-white/40 max-w-sm leading-relaxed">
             O primeiro sistema de performance inteligente desenhado exclusivamente para a biologia feminina.
@@ -906,7 +906,7 @@ const Footer = () => (
           <ul className="space-y-4 text-white/40 text-sm">
             <li><a href="/tecnologia" className="hover:text-primary transition-colors">Tecnologia</a></li>
             <li><a href="/artemis-score" className="hover:text-primary transition-colors">Artemis Score</a></li>
-            <li><a href="/guia" className="hover:text-primary transition-colors text-primary flex items-center gap-2"><Sparkles size={14} className="text-primary" /> Guia Artemis</a></li>
+            <li><a href="/guia" className="hover:text-primary transition-colors text-primary flex items-center gap-2"><Sparkles size={14} className="text-primary" /> Guia Artemis Fit App</a></li>
           </ul>
         </div>
         <div>
@@ -919,7 +919,7 @@ const Footer = () => (
         </div>
       </div>
       <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-12 border-t border-white/5 text-white/20 text-xs uppercase tracking-widest font-bold">
-        <div>© 2026 Artemis Fit Pro. Todos os direitos reservados.</div>
+        <div>© 2026 Artemis Fit App. Todos os direitos reservados.</div>
         <a
           href="https://instagram.com"
           target="_blank"
@@ -940,13 +940,13 @@ export default function Landing() {
   return (
     <div className="bg-dark min-h-screen selection:bg-primary selection:text-dark">
       <SEOHead
-          title="Artemis Fit Pro — App de Treino Feminino com IA e Ciclo Menstrual"
+          title="Artemis Fit App — App de Treino Feminino com IA e Ciclo Menstrual"
           description="Treine de acordo com seu ciclo menstrual. IA que adapta seus treinos à sua biologia. Experimente grátis por 7 dias."
           canonicalUrl="https://artemisfit.online/"
           schema={{
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "Artemis Fit Pro",
+            "name": "Artemis Fit App",
             "url": "https://artemisfit.online/",
             "description": "Sistema de performance feminina inteligente adaptado ao ciclo menstrual.",
             "potentialAction": {
@@ -996,7 +996,7 @@ export default function Landing() {
             <div className="grid md:grid-cols-4 gap-8">
               {[
                 { icon: <Zap />, title: "Treino", desc: "Ajustes de carga e volume baseados no seu estado biológico." },
-                { icon: <Activity />, title: "Nutrição", desc: "Sua alimentação impacta diretamente seu desempenho — o Artemis te mostra como ajustar." },
+                { icon: <Activity />, title: "Nutrição", desc: "Sua alimentação impacta diretamente seu desempenho — o Artemis Fit App te mostra como ajustar." },
                 { icon: <Calendar />, title: "Sintomas", desc: "Bio-feedback real para evitar lesões e otimizar recuperação." },
                 { icon: <Target />, title: "Progresso", desc: "Evolução estratégica sem risco de burnout ou estagnação." }
               ].map((item, i) => (

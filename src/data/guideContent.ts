@@ -331,7 +331,7 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: 'Como evitar a estagnação nos treinos?',
-    answer: 'Estagnação vem de falta de progressão. A cada 2-3 semanas, tente progredir em carga, volume (mais séries/reps) ou técnica (tempo sob tensão, paused reps). O corpo se adapta ao estímulo repetitivo — você precisa variar inteligentemente. O Artemis Fit Pro faz isso automaticamente com IA.',
+    answer: 'Estagnação vem de falta de progressão. A cada 2-3 semanas, tente progredir em carga, volume (mais séries/reps) ou técnica (tempo sob tensão, paused reps). O corpo se adapta ao estímulo repetitivo — você precisa variar inteligentemente. O Artemis Fit App faz isso automaticamente com IA.',
   },
   {
     question: 'O que é mais importante: treino ou dieta?',
@@ -373,7 +373,7 @@ export const actionSteps: ActionStep[] = [
   {
     step: 4,
     title: 'Deixe a IA Fazer Isso Por Você',
-    description: 'O Artemis Fit Pro integra ciclo + treino + nutrição em uma inteligência artificial que se adapta a você todos os dias automaticamente.',
+    description: 'O Artemis Fit App integra ciclo + treino + nutrição em uma inteligência artificial que se adapta a você todos os dias automaticamente.',
     icon: '🤖',
     isCTA: true,
   },

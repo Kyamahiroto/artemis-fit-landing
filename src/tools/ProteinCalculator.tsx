@@ -121,13 +121,13 @@ export const ProteinCalculator = () => {
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark pb-32">
             <SEOHead
-                title="Calculadora de Proteína para Mulheres | Artemis Fit Pro"
+                title="Calculadora de Proteína para Mulheres | Artemis Fit App"
                 description="Calcule suas cotas ideais de proteína por refeição considerando a fisiologia feminina e janela anabólica. Ferramenta gratuita."
                 canonicalUrl="https://artemisfit.online/guia/calculadora-proteina"
                 schema={{
                     "@context": "https://schema.org",
                     "@type": "WebApplication",
-                    "name": "Calculadora de Proteína Artemis",
+                    "name": "Calculadora de Proteína Artemis Fit App",
                     "applicationCategory": "HealthApplication",
                     "operatingSystem": "All",
                     "description": "Calcule suas cotas ideais de proteína por refeição considerando a fisiologia feminina e janela anabólica.",
@@ -137,7 +137,7 @@ export const ProteinCalculator = () => {
 
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between sticky top-0 z-40">
                 <Link to="/guia" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
-                    <ArrowLeft size={16} /> Guia Artemis
+                    <ArrowLeft size={16} /> Guia Artemis Fit App
                 </Link>
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary/60 border border-primary/20 px-3 py-1 rounded-full">
                     <Target size={12} /> Nutrição
@@ -318,7 +318,7 @@ export const ProteinCalculator = () => {
                                             <b>Sem rastreamento contínuo, esses números viram decoração.</b>
                                         </p>
                                         <a href="https://app.artemisfit.online" className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-dark rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_0_20px_-5px_rgba(205,255,0,0.4)]">
-                                            <Zap size={18} /> Rastrear cotas automaticamente com a IA Artemis
+                                            <Zap size={18} /> Rastrear cotas automaticamente com a IA Artemis Fit App
                                         </a>
                                         <div className="mt-8 pt-6 border-t border-white/5">
                                             <button onClick={() => { setStep('input'); setGoal(null); }} className="text-xs font-bold text-white/30 uppercase tracking-widest hover:text-white transition-colors">

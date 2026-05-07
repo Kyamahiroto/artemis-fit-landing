@@ -13,7 +13,7 @@ export const GuideTip = () => {
             <div className="min-h-screen bg-dark text-white flex items-center justify-center">
                 <div className="text-center">
                     <h1 className="text-4xl font-bold mb-4">Dica não encontrada</h1>
-                    <Link to="/guia" className="text-primary underline">Voltar ao Guia Artemis</Link>
+                    <Link to="/guia" className="text-primary underline">Voltar ao Guia Artemis Fit App</Link>
                 </div>
             </div>
         );
@@ -22,14 +22,14 @@ export const GuideTip = () => {
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark pb-32">
             <SEOHead
-                title={`${tip.title} | Artemis Fit Pro`}
+                title={`${tip.title} | Artemis Fit App`}
                 description={tip.paragraphs[0].substring(0, 155) + '...'}
                 canonicalUrl={`https://artemisfit.online/guia/dicas/${tip.slug}`}
             />
 
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between">
                 <Link to="/guia" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
-                    <ArrowLeft size={16} /> Guia Artemis
+                    <ArrowLeft size={16} /> Guia Artemis Fit App
                 </Link>
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary/60 border border-primary/20 px-3 py-1 rounded-full">
                     <BookOpen size={12} /> Dica Científica
@@ -42,7 +42,7 @@ export const GuideTip = () => {
                     <div className="flex items-center gap-2 text-xs text-white/30 mb-8 font-medium">
                         <Link to="/" className="hover:text-primary transition-colors">Home</Link>
                         <span>/</span>
-                        <Link to="/guia" className="hover:text-primary transition-colors">Guia Artemis</Link>
+                        <Link to="/guia" className="hover:text-primary transition-colors">Guia Artemis Fit App</Link>
                         <span>/</span>
                         <span className="text-white/50">Dica</span>
                     </div>
@@ -79,7 +79,7 @@ export const GuideTip = () => {
                     <div className="p-8 bg-primary/5 border border-primary/20 rounded-[2rem] text-center">
                         <h2 className="text-2xl font-bold mb-4 font-display">{tip.cta}</h2>
                         <a href="https://app.artemisfit.online" className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-dark rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_0_20px_-5px_rgba(205,255,0,0.4)]">
-                            <Zap size={18} /> Conhecer o Artemis Fit Pro
+                            <Zap size={18} /> Conhecer o Artemis Fit App
                         </a>
                     </div>
 
@@ -110,8 +110,8 @@ export const GuideTip = () => {
                         "@type": "Article",
                         "headline": tip.title,
                         "description": tip.paragraphs[0].substring(0, 155),
-                        "author": { "@type": "Organization", "name": "Artemis Fit Pro" },
-                        "publisher": { "@type": "Organization", "name": "Artemis Fit Pro" },
+                        "author": { "@type": "Organization", "name": "Artemis Fit App" },
+                        "publisher": { "@type": "Organization", "name": "Artemis Fit App" },
                         "mainEntityOfPage": `https://artemisfit.online/guia/dicas/${tip.slug}`
                     })
                 }}

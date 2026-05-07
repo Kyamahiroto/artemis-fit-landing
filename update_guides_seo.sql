@@ -1,4 +1,4 @@
--- SCRIPT DE ATUALIZAÇÃO DE CONTEÚDO SEO - Artemis Fit Pro
+-- SCRIPT DE ATUALIZAÇÃO DE CONTEÚDO SEO - Artemis Fit App
 -- Execute este script no SQL Editor do seu projeto Supabase
 
 -- 1. Treino na Fase Lútea
@@ -28,10 +28,10 @@ Fique atenta à retenção de líquidos e ao desconforto articular. A progestero
 
 ---
 **Sincronize seu treino com sua biologia.**
-[Use a Calculadora de Ciclo Artemis](/guia/ciclo-e-treino)
+[Use a Calculadora de Ciclo Artemis Fit App](/guia/ciclo-e-treino)
 
 **Treinos inteligentes na palma da mão.**
-[Conheça o App Artemis Fit Pro](https://app.artemisfit.online)'
+[Conheça o Artemis Fit App](https://app.artemisfit.online)'
 WHERE slug = 'como-adaptar-treino-fase-lutea';
 
 -- 2. Cardio na Fase Folicular
@@ -61,10 +61,10 @@ Mesmo estando no seu auge, lembre-se de monitorar a carga total da semana. Como 
 
 ---
 **Descubra em qual fase do ciclo você está agora.**
-[Calculadora de Ciclo e Treino](/guia/ciclo-e-treino)
+[Calculadora de Ciclo e Treino Artemis Fit App](/guia/ciclo-e-treino)
 
 **Maximize seus resultados com IA.**
-[Conheça o App Artemis Fit Pro](https://app.artemisfit.online)'
+[Conheça o Artemis Fit App](https://app.artemisfit.online)'
 WHERE slug = 'como-adaptar-cardio-fase-folicular';
 
 -- 3. Treino de Força na Ovulação
@@ -94,10 +94,10 @@ Evite exercícios que exijam mudanças bruscas de direção, saltos laterais ou 
 
 ---
 **Saiba quando sua força máxima estará no pico.**
-[Calculadora de Ciclo Artemis](/guia/ciclo-e-treino)
+[Calculadora de Ciclo Artemis Fit App](/guia/ciclo-e-treino)
 
 **Periodização inteligente baseada na sua biologia.**
-[Baixe o App Artemis Fit Pro](https://app.artemisfit.online)'
+[Baixe o Artemis Fit App](https://app.artemisfit.online)'
 WHERE slug = 'treino-forca-fase-ovulatoria';
 
 -- 4. Quanta Proteína Uma Mulher Precisa?
@@ -127,10 +127,10 @@ Se sua recuperação muscular está muito lenta, seu cabelo e unhas estão fraco
 
 ---
 **Calcule sua cota proteica personalizada agora.**
-[Calculadora de Proteína Artemis](/guia/calculadora-proteina)
+[Calculadora de Proteína Artemis Fit App](/guia/calculadora-proteina)
 
 **Plano nutricional completo com IA.**
-[Conheça o App Artemis Fit Pro](https://app.artemisfit.online)'
+[Conheça o Artemis Fit App](https://app.artemisfit.online)'
 WHERE slug = 'proteina-mulheres-quanto-comer';
 
 -- 5. Sono e Hipertrofia na Mulher
@@ -160,10 +160,10 @@ Se você acorda cansada todos os dias, sente sonolência à tarde ou sua força 
 
 ---
 **Veja como seu estilo de vida está afetando seu potencial.**
-[Diagnóstico de Treino Artemis](/guia/diagnostico-treino)
+[Diagnóstico de Treino Artemis Fit App](/guia/diagnostico-treino)
 
 **IA que monitora seu progresso real.**
-[Conheça o App Artemis Fit Pro](https://app.artemisfit.online)'
+[Conheça o Artemis Fit App](https://app.artemisfit.online)'
 WHERE slug = 'sono-e-hipertrofia-feminina';
 
 -- 6. 5 Sinais de Overtraining em Mulheres
@@ -197,10 +197,10 @@ Use a periodização baseada no ciclo menstrual para evitar picos de estresse em
 
 ---
 **Descubra se seu treino está no volume ideal.**
-[Faça o Diagnóstico Artemis](/guia/diagnostico-treino)
+[Faça o Diagnóstico Artemis Fit App](/guia/diagnostico-treino)
 
 **Recupere-se como uma profissional.**
-[Conheça o App Artemis Fit Pro](https://app.artemisfit.online)'
+[Conheça o Artemis Fit App](https://app.artemisfit.online)'
 WHERE slug = 'overtraining-sinais-mulheres';
 
 -- 7. Pode Treinar na Menstruação? (Versão Atualizada)
@@ -230,10 +230,10 @@ Embora o treino seja seguro, escute os sinais de alerta do seu corpo. Se você s
 
 ---
 **Quer saber exatamente o que treinar hoje com base no seu dia do ciclo?**
-[Use nossa Calculadora de Ciclo e Treino Grátis](/guia/ciclo-e-treino)
+[Use nossa Calculadora de Ciclo e Treino Artemis Fit App Grátis](/guia/ciclo-e-treino)
 
 **Treine com inteligência todos os dias.**
-[Conheça o App Artemis Fit Pro](https://app.artemisfit.online)'
+[Conheça o Artemis Fit App](https://app.artemisfit.online)'
 WHERE slug = 'fase-menstrual-pode-treinar';
 
 -- 8. Retenção de Líquido na Fase Lútea
@@ -263,8 +263,8 @@ Não tente fazer dietas restritivas de emergência para "compensar" o peso da ba
 
 ---
 **Não se perca nos números. Entenda sua biologia.**
-[Calculadora de Ciclo Artemis](/guia/ciclo-e-treino)
+[Calculadora de Ciclo Artemis Fit App](/guia/ciclo-e-treino)
 
 **IA que entende suas variações de peso.**
-[Conheça o App Artemis Fit Pro](https://app.artemisfit.online)'
+[Conheça o Artemis Fit App](https://app.artemisfit.online)'
 WHERE slug = 'retencao-liquido-fase-lutea';

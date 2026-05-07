@@ -38,7 +38,7 @@ function App() {
         <Route path="/cookies" element={<Cookies />} />
         <Route path="/tecnologia" element={<Technology />} />
 
-        {/* Guia Artemis Ecosystem */}
+        {/* Artemis Fit App Ecosystem */}
         <Route path="/guia" element={<ToolsHub />} />
         <Route path="/guia/ciclo-e-treino" element={<CycleCalculator />} />
         <Route path="/guia/gerador-de-treino" element={<WorkoutGenerator />} />

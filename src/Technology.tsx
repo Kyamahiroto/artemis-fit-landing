@@ -8,16 +8,16 @@ import { SEOHead } from './components/SEOHead';
 export const Technology = () => {
     const steps = [
         { num: '01', title: 'Você registra seus dados', desc: 'Nível, objetivos, rotina, local de treino e informações sobre seu ciclo.', icon: <Sparkles size={20} className="text-primary" /> },
-        { num: '02', title: 'O sistema analisa seu comportamento', desc: 'O Artemis processa seu histórico e identifica padrões de desempenho e evolução.', icon: <Brain size={20} className="text-primary" /> },
+        { num: '02', title: 'O sistema analisa seu comportamento', desc: 'O Artemis Fit App processa seu histórico e identifica padrões de desempenho e evolução.', icon: <Brain size={20} className="text-primary" /> },
         { num: '03', title: 'O treino é criado automaticamente', desc: 'Um plano completo e personalizado é gerado para a sua realidade.', icon: <Zap size={20} className="text-primary" /> },
         { num: '04', title: 'Ajustes com base no seu desempenho', desc: 'Cada sessão registrada alimenta o sistema para calibrar cargas e volume.', icon: <Activity size={20} className="text-primary" /> },
         { num: '05', title: 'Você evolui com direção', desc: 'Progresso consistente e sem achismo — guiado por dados reais.', icon: <TrendingUp size={20} className="text-primary" /> },
     ];
 
     const anticipations = [
-        { icon: <TrendingUp size={22} className="text-primary" />, title: 'Queda de desempenho', desc: 'O Artemis identifica quando seu rendimento cai e ajusta o plano antes que você trave.' },
+        { icon: <TrendingUp size={22} className="text-primary" />, title: 'Queda de desempenho', desc: 'O Artemis Fit App identifica quando seu rendimento cai e ajusta o plano antes que você trave.' },
         { icon: <Calendar size={22} className="text-primary" />, title: 'Falta de consistência', desc: 'O sistema detecta lacunas na rotina e adapta o treino para manter o momentum.' },
-        { icon: <Activity size={22} className="text-primary" />, title: 'Necessidade de ajuste', desc: 'Quando seu corpo pede recovery ou intensidade diferente, o Artemis responde primeiro.' },
+        { icon: <Activity size={22} className="text-primary" />, title: 'Necessidade de ajuste', desc: 'Quando seu corpo pede recovery ou intensidade diferente, o Artemis Fit App responde primeiro.' },
     ];
 
     const personalizations = [
@@ -37,8 +37,8 @@ export const Technology = () => {
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark">
             <SEOHead
-                title="Tecnologia Artemis | Inteligência Feminina em Performance"
-                description="Entenda como a IA Artemis analisa sua biologia, ciclo menstrual e desempenho para criar o sistema de treino mais avançado para mulheres."
+                title="Tecnologia Artemis Fit App | Inteligência Feminina em Performance"
+                description="Entenda como a IA Artemis Fit App analisa sua biologia, ciclo menstrual e desempenho para criar o sistema de treino mais avançado para mulheres."
                 canonicalUrl="https://artemisfit.online/tecnologia"
             />
             {/* Navbar */}
@@ -46,7 +46,7 @@ export const Technology = () => {
                 <a href="/" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
                     <ArrowLeft size={16} /> Voltar
                 </a>
-                <img src="/logo.png" alt="Artemis Fit Pro Logo" className="h-10 w-auto" />
+                <img src="/logo.png" alt="Artemis Fit App Logo" className="h-10 w-auto" />
             </nav>
 
             {/* Hero */}
@@ -55,7 +55,7 @@ export const Technology = () => {
                 <div className="absolute bottom-0 -right-20 w-80 h-80 bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
                     className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-xs font-bold uppercase tracking-widest mb-8">
-                    <Sparkles size={14} /> Tecnologia Artemis
+                    <Sparkles size={14} /> Tecnologia Artemis Fit App
                 </motion.div>
                 <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
                     className="text-5xl md:text-8xl font-bold font-display leading-[0.95] mb-6 tracking-tight max-w-5xl mx-auto">
@@ -63,7 +63,7 @@ export const Technology = () => {
                 </motion.h1>
                 <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
                     className="text-lg md:text-xl text-white/50 max-w-2xl mx-auto">
-                    O Artemis não entrega apenas treinos. Ele analisa, aprende e evolui com você.
+                    O Artemis Fit App não entrega apenas treinos. Ele analisa, aprende e evolui com você.
                 </motion.p>
             </section>
 
@@ -96,7 +96,7 @@ export const Technology = () => {
                         <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">Inteligência Adaptativa</h2>
                         <h3 className="text-3xl md:text-6xl font-bold font-display mb-6">O sistema que se molda<br /><span className="italic text-white/40">à sua evolução.</span></h3>
                         <p className="text-lg text-white/50 max-w-2xl mx-auto">
-                            O Artemis identifica padrões, ajusta cargas e adapta seu treino conforme sua evolução — sem que você precise entender tudo tecnicamente.
+                            O Artemis Fit App identifica padrões, ajusta cargas e adapta seu treino conforme sua evolução — sem que você precise entender tudo tecnicamente.
                         </p>
                     </div>
                     <div className="grid md:grid-cols-3 gap-6">
@@ -122,7 +122,7 @@ export const Technology = () => {
                     <div>
                         <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">Personalização Real</h2>
                         <h3 className="text-3xl md:text-5xl font-bold font-display mb-6 leading-tight">Seu treino respeita<br /><span className="italic text-white/40">sua realidade.</span></h3>
-                        <p className="text-lg text-white/50 mb-8 leading-relaxed">Nada de plano genérico. O Artemis considera a sua situação única e entrega recomendações que se encaixam na sua vida.</p>
+                        <p className="text-lg text-white/50 mb-8 leading-relaxed">Nada de plano genérico. O Artemis Fit App considera a sua situação única e entrega recomendações que se encaixam na sua vida.</p>
                         <p className="text-white/70 italic">"Seu treino respeita sua realidade e seu momento."</p>
                     </div>
                     <div className="space-y-4">
@@ -143,7 +143,7 @@ export const Technology = () => {
                 <div className="max-w-7xl mx-auto">
                     <div className="text-center mb-16">
                         <h2 className="text-sm font-bold text-primary uppercase tracking-[0.2em] mb-4">Antecipação</h2>
-                        <h3 className="text-3xl md:text-6xl font-bold font-display mb-6">O Artemis não apenas<br /><span className="italic text-white/40">acompanha. Ele antecipa.</span></h3>
+                        <h3 className="text-3xl md:text-6xl font-bold font-display mb-6">O Artemis Fit App não apenas<br /><span className="italic text-white/40">acompanha. Ele antecipa.</span></h3>
                     </div>
                     <div className="grid md:grid-cols-3 gap-6">
                         {anticipations.map((item, i) => (
@@ -168,7 +168,7 @@ export const Technology = () => {
                                 className={`max-w-sm p-5 rounded-2xl text-sm relative z-10 ${msg.from === 'user' ? 'ml-auto glass rounded-br-none' : 'bg-primary text-dark font-medium rounded-bl-none'}`}>
                                 {msg.from === 'ai' && (
                                     <div className="flex items-center gap-2 mb-2">
-                                        <Brain size={14} /><span className="text-[10px] font-bold uppercase tracking-wider">Artemis AI</span>
+                                        <Brain size={14} /><span className="text-[10px] font-bold uppercase tracking-wider">Artemis Fit App AI</span>
                                     </div>
                                 )}
                                 {msg.text}
@@ -197,7 +197,7 @@ export const Technology = () => {
                         O único sistema que <span className="text-primary italic">respeita</span><br />a biologia feminina.
                     </h3>
                     <p className="text-lg text-white/60 max-w-2xl mx-auto leading-relaxed">
-                        O Artemis considera variações fisiológicas do ciclo menstrual e adapta as recomendações de acordo com o estado real do seu corpo — não com médias masculinas.
+                        O Artemis Fit App considera variações fisiológicas do ciclo menstrual e adapta as recomendações de acordo com o estado real do seu corpo — não com médias masculinas.
                     </p>
                 </div>
             </section>
@@ -207,21 +207,21 @@ export const Technology = () => {
                 <div className="max-w-4xl mx-auto">
                     <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}
                         className="text-4xl md:text-7xl font-bold font-display leading-[0.95] mb-8 tracking-tight">
-                        O Artemis não é um<br /><span className="italic text-white/40">app de treino.</span><br />É um sistema que<br /><span className="text-primary">evolui com você.</span>
+                        O Artemis Fit App não é um<br /><span className="italic text-white/40">app de treino.</span><br />É um sistema que<br /><span className="text-primary">evolui com você.</span>
                     </motion.h2>
                     <p className="text-lg text-white/40 max-w-xl mx-auto mb-16 leading-relaxed">
                         Tecnologia criada para mulheres que levam a sério a própria evolução.
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                         <a href="https://app.artemisfit.online" className="w-full sm:w-auto px-10 py-5 bg-primary text-dark rounded-full font-bold text-lg hover:scale-105 transition-transform flex items-center justify-center gap-3 shadow-[0_0_40px_-10px_rgba(205,255,0,0.5)]">
-                            <Zap size={22} /> Acessar Artemis
+                            <Zap size={22} /> Acessar Artemis Fit App
                         </a>
                     </div>
                 </div>
             </section>
 
             <footer className="py-12 border-t border-white/5 text-center text-[10px] text-white/20 font-bold uppercase tracking-widest">
-                © 2026 Artemis Fit Pro. Todos os direitos reservados.
+                © 2026 Artemis Fit App. Todos os direitos reservados.
             </footer>
         </div>
     );

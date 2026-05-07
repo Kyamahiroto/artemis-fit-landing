@@ -195,7 +195,7 @@ export const CycleCalculator = () => {
     };
 
     const handleShare = () => {
-        const text = `Meu Perfil Artemis: Hoje estou no Dia ${currentDay} do biológico (Fase ${resultPhase}). O que significa: ${resultPhase ? phaseData[resultPhase].impact : ''} Descubra o seu na Calculadora Artemis!`;
+        const text = `Meu Perfil Artemis Fit App: Hoje estou no Dia ${currentDay} do biológico (Fase ${resultPhase}). O que significa: ${resultPhase ? phaseData[resultPhase].impact : ''} Descubra o seu na Calculadora Artemis Fit App!`;
         navigator.clipboard.writeText(text);
         setCopied(true);
         setTimeout(() => setCopied(false), 3000);
@@ -207,7 +207,7 @@ export const CycleCalculator = () => {
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark">
             <SEOHead
-                title="Calculadora de Ciclo Menstrual e Treino Grátis — Artemis Fit Pro"
+                title="Calculadora de Ciclo Menstrual e Treino Grátis — Artemis Fit App"
                 description="Descubra em que fase do ciclo você está e o que treinar hoje. Painel hormonal completo e recomendações personalizadas."
                 canonicalUrl="https://artemisfit.online/guia/ciclo-e-treino"
                 schema={{
@@ -223,7 +223,7 @@ export const CycleCalculator = () => {
 
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between sticky top-0 z-40">
                 <Link to="/guia" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
-                    <ArrowLeft size={16} /> Guia Artemis
+                    <ArrowLeft size={16} /> Guia Artemis Fit App
                 </Link>
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary/60 border border-primary/20 px-3 py-1 rounded-full">
                     <Sparkles size={12} /> Beta
@@ -295,7 +295,7 @@ export const CycleCalculator = () => {
                                         </div>
                                         <div className="flex items-center gap-2 mb-6">
                                             <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center"><Activity size={16} className="text-primary" /></div>
-                                            <span className="text-xs font-bold uppercase tracking-widest text-white/40">Perfil Biológico Artemis</span>
+                                            <span className="text-xs font-bold uppercase tracking-widest text-white/40">Perfil Biológico Artemis Fit App</span>
                                         </div>
 
                                         {/* Cycle Wheel */}

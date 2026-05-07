@@ -138,7 +138,7 @@ export const ToolsHub = () => {
   return (
     <div className="min-h-screen bg-dark text-white font-sans pb-20">
       <SEOHead
-        title="Guia Artemis — Treino Feminino, Ciclo Menstrual e Nutrição"
+        title="Guia Artemis Fit App — Treino Feminino, Ciclo Menstrual e Nutrição"
         description="Ferramentas gratuitas e artigos científicos sobre treino feminino, ciclo menstrual e nutrição. Feito para mulheres que treinam com inteligência."
         canonicalUrl="https://artemisfit.online/guia"
       />
@@ -146,7 +146,7 @@ export const ToolsHub = () => {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between md:px-12">
         <Link to="/" className="flex items-center gap-2 group">
-          <img src="/logo.png" alt="Artemis Logo" className="h-6 md:h-8 group-hover:scale-105 transition-transform" />
+          <img src="/logo.png" alt="Artemis Fit App Logo" className="h-6 md:h-8 group-hover:scale-105 transition-transform" />
         </Link>
         <div className="hidden md:flex gap-8 text-sm font-bold uppercase tracking-widest text-white/40">
            <Link to="/" className="hover:text-primary transition-colors">Home</Link>
@@ -165,7 +165,7 @@ export const ToolsHub = () => {
             
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-[0.2em] mb-6">
-                    <Sparkles size={12} /> Ecossistema Artemis
+                    <Sparkles size={12} /> Ecossistema Artemis Fit App
                 </div>
                 <h1 className="text-4xl md:text-6xl font-bold font-display mb-8 max-w-2xl mx-auto leading-tight italic">
                     Onde a ciência encontra o seu <span className="text-primary not-italic">bio-hack</span>
@@ -310,7 +310,7 @@ export const ToolsHub = () => {
                     <div className="flex items-end justify-between mb-10 px-2">
                         <div>
                             <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 mb-2 flex items-center gap-2">
-                                <BookOpen size={12} /> Guia Artemis
+                                <BookOpen size={12} /> Guia Artemis Fit App
                             </h2>
                             <h3 className="text-3xl font-bold font-display italic">Biblioteca de Bio-Hacks</h3>
                         </div>
@@ -399,7 +399,7 @@ export const ToolsHub = () => {
 
       {/* Footer simplistic to match hub feel */}
       <footer className="mt-32 py-20 px-6 border-t border-white/5 text-center">
-            <img src="/logo.png" alt="Artemis Logo" className="h-6 opacity-20 mx-auto mb-8" />
+            <img src="/logo.png" alt="Artemis Fit App Logo" className="h-6 opacity-20 mx-auto mb-8" />
             <p className="text-white/20 text-[10px] font-bold uppercase tracking-widest mb-6">Ciência Feminina & Performance</p>
             <div className="flex justify-center gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
                 <Link to="/" className="hover:text-primary">Home</Link>

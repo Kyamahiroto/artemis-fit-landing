@@ -110,7 +110,7 @@ export const EmailGate: React.FC<EmailGateProps> = ({
                     Veja sua <span className="text-primary italic">Análise Deep</span> + Bônus Gratuito
                   </h3>
                   <p className="text-white/40 text-sm max-w-md mx-auto leading-relaxed">
-                    Desbloqueie o resultado completo e receba o <strong className="text-white">Guia Artemis (PDF Interativo)</strong> com bio-hacks para seu treino de acordo com seu ciclo.
+                    Desbloqueie o resultado completo e receba o <strong className="text-white">Guia Artemis Fit App (PDF Interativo)</strong> com bio-hacks para seu treino de acordo com seu ciclo.
                   </p>
                 </div>
 
@@ -188,7 +188,7 @@ export const EmailGate: React.FC<EmailGateProps> = ({
                       />
                     </div>
                     <span className="text-[10px] text-white/30 leading-snug group-hover:text-white/50 transition-colors">
-                      Aceito receber dicas de bio-hack e novidades do Artemis Fit Pro. Prometo que será útil ou você sai com um clique.
+                      Aceito receber dicas de bio-hack e novidades do Artemis Fit App. Prometo que será útil ou você sai com um clique.
                     </span>
                   </label>
 
@@ -249,7 +249,7 @@ export const EmailGate: React.FC<EmailGateProps> = ({
               className="flex items-center gap-3 justify-center mb-10 px-6 py-3 bg-primary/10 border border-primary/20 rounded-2xl text-sm font-bold text-primary mx-auto w-fit shadow-[0_0_30px_rgba(205,255,0,0.1)]"
             >
               <CheckCircle2 size={18} /> 
-              <span>Tudo certo! O Guia Artemis foi enviado para <b>{email || capturedEmail}</b></span>
+              <span>Tudo certo! O Guia Artemis Fit App foi enviado para <b>{email || capturedEmail}</b></span>
             </motion.div>
           )}
           {children}

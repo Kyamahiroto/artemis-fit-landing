@@ -275,13 +275,13 @@ export const TrainingDiagnostic = () => {
     return (
         <div className="min-h-screen bg-dark text-white font-sans selection:bg-primary selection:text-dark pb-32">
             <SEOHead
-                title="Teste de Potencial Muscular Feminino | Artemis Fit Pro"
+                title="Teste de Potencial Muscular Feminino | Artemis Fit App"
                 description="Faça o teste de 8 perguntas e descubra o que está limitando sua evolução muscular e como corrigir. Diagnóstico gratuito."
                 canonicalUrl="https://artemisfit.online/guia/diagnostico-treino"
                 schema={{
                     "@context": "https://schema.org",
                     "@type": "WebApplication",
-                    "name": "Diagnóstico de Treino Artemis",
+                    "name": "Diagnóstico de Treino Artemis Fit App",
                     "applicationCategory": "HealthApplication",
                     "operatingSystem": "All",
                     "description": "Descubra o que está limitando sua evolução muscular e como corrigir com este teste de 8 perguntas.",
@@ -291,7 +291,7 @@ export const TrainingDiagnostic = () => {
 
             <nav className="px-6 py-5 bg-dark/90 backdrop-blur-md border-b border-white/5 flex items-center justify-between sticky top-0 z-40">
                 <Link to="/guia" className="flex items-center gap-2 text-sm font-bold text-white/40 hover:text-primary transition-colors">
-                    <ArrowLeft size={16} /> Guia Artemis
+                    <ArrowLeft size={16} /> Guia Artemis Fit App
                 </Link>
                 <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary/60 border border-primary/20 px-3 py-1 rounded-full">
                     <Brain size={12} /> Diagnóstico
@@ -432,7 +432,7 @@ export const TrainingDiagnostic = () => {
                                     <div>
                                         <h3 className="text-xl font-bold mb-2">Este teste indica falhas. Corrigi-las exige rastreamento.</h3>
                                         <p className="text-white/60 text-sm leading-relaxed mb-6">
-                                            Você viu os gargalos. Mas <b>saber e resolver são coisas diferentes</b>. A Artemis AI monitora sono, fadiga, ciclo e progressão — e corrige a rota do treino em tempo real. Sem planilha. Sem achismo.
+                                            Você viu os gargalos. Mas <b>saber e resolver são coisas diferentes</b>. A Artemis Fit App AI monitora sono, fadiga, ciclo e progressão — e corrige a rota do treino em tempo real. Sem planilha. Sem achismo.
                                         </p>
                                         <a href="https://app.artemisfit.online" className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-dark rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_0_20px_-5px_rgba(205,255,0,0.4)]">
                                             <Zap size={18} /> Ativar monitoramento contínuo com IA

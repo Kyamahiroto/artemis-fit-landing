@@ -1,5 +1,5 @@
 -- ===================================================================
--- Artemis Fit Pro - LEADS TABLE MIGRATION
+-- Artemis Fit App - LEADS TABLE MIGRATION
 -- Run this in the Supabase SQL Editor (Dashboard > SQL Editor)
 -- ===================================================================
 
