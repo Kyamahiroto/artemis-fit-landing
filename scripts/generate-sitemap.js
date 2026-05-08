@@ -61,8 +61,7 @@ async function generateSitemap() {
       const guides = await response.json();
       console.log(`✅ ${guides.length} guias encontrados.`);
       guides.forEach(g => {
-        // Both formats are used in App.tsx
-        allRoutes.push(`${BASE_URL}/${g.slug}`);
+        // Correct path for dynamic guides in App.tsx is /guia/:slug
         allRoutes.push(`${BASE_URL}/guia/${g.slug}`);
       });
     } else {
