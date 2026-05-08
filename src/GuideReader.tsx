@@ -5,6 +5,7 @@ import { ArrowLeft, BookOpen, Calendar, Clock, Share2, Bookmark, CheckCircle2, Z
 import { SEOHead } from './components/SEOHead';
 import { motion, AnimatePresence } from 'motion/react';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 interface Guide {
   id: string;
@@ -166,6 +167,7 @@ export const GuideReader = () => {
                     
                     <div className="prose prose-invert prose-p:text-white/60 prose-strong:text-white/90 prose-headings:font-display prose-headings:font-bold prose-lg max-w-none prose-a:text-primary prose-blockquote:border-primary prose-blockquote:bg-white/[0.02]">
                         <ReactMarkdown
+                            rehypePlugins={[rehypeRaw]}
                             components={{
                                 img: ({node, ...props}) => <img {...props} className="rounded-3xl border border-white/10 my-10 w-full" />,
                                 h2: ({node, ...props}) => <h2 {...props} className="text-3xl md:text-4xl mt-16 mb-8 text-white border-b border-white/5 pb-6 italic" />,

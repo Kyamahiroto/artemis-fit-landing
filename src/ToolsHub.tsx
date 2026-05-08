@@ -93,32 +93,38 @@ export const ToolsHub = () => {
   useEffect(() => {
     let result = guides;
     
+    // Helper to remove accents/diacritics for better comparison
+    const normalize = (str: string) => 
+      str.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
     // Filter by Search
     if (search) {
+      const term = normalize(search);
       result = result.filter(g => 
-        g.title.toLowerCase().includes(search.toLowerCase()) || 
-        g.subtitle?.toLowerCase().includes(search.toLowerCase())
+        normalize(g.title).includes(term) || 
+        normalize(g.subtitle || '').includes(term)
       );
     }
     
     // Filter by Category
     if (activeCategory !== 'all') {
+      const active = normalize(activeCategory);
       result = result.filter(g => {
-         const cat = g.category?.toLowerCase() || '';
-         const active = activeCategory.toLowerCase();
+         const cat = normalize(g.category || '');
          
          // Client-side heuristics if category isn't set in DB
          if (!g.category) {
-            const title = g.title.toLowerCase();
+            const title = normalize(g.title);
             if (active === 'treino' && title.includes('treino')) return true;
             if (active === 'ciclo' && (title.includes('ciclo') || title.includes('fase') || title.includes('menstrual'))) return true;
-            if (active === 'nutricao' && (title.includes('proteína') || title.includes('nutrição') || title.includes('comer'))) return true;
+            if (active === 'nutricao' && (title.includes('proteina') || title.includes('nutricao') || title.includes('comer'))) return true;
             if (active === 'recuperacao' && (title.includes('sono') || title.includes('overtraining') || title.includes('descanso'))) return true;
-            if (active === 'saude' && (title.includes('hormônio') || title.includes('corpo') || title.includes('sinais'))) return true;
+            if (active === 'saude' && (title.includes('hormonio') || title.includes('corpo') || title.includes('sinais'))) return true;
             return false;
          }
          
-         return cat.includes(active);
+         // Match if category string contains the active filter string or vice versa
+         return cat.includes(active) || active.includes(cat);
       });
     }
     

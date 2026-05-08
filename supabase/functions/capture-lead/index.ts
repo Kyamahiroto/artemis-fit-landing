@@ -202,14 +202,18 @@ Deno.serve(async (req: Request) => {
           }),
         });
 
+        const resendData = await resendResponse.json();
+
         if (!resendResponse.ok) {
-          const resendError = await resendResponse.text();
-          console.error("Resend error:", resendError);
+          console.error("Resend API error:", JSON.stringify(resendData));
+        } else {
+          console.log("E-mail enviado com sucesso! ID:", resendData.id);
         }
       } catch (emailError) {
-        console.error("Email sending error:", emailError);
-        // Don't fail the request if email sending fails
+        console.error("Email sending error (catch block):", emailError);
       }
+    } else {
+      console.warn("RESEND_API_KEY não encontrada nas variáveis de ambiente do Supabase.");
     }
 
     return new Response(
