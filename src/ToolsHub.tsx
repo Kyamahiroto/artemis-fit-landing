@@ -37,6 +37,8 @@ export const ToolsHub = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [subscribed, setSubscribed] = useState(false);
   const [email, setEmail] = useState('');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 12; // 6 rows * 2 columns
 
   const tools = [
     {
@@ -137,6 +139,7 @@ export const ToolsHub = () => {
     }
     
     setFilteredGuides(result);
+    setCurrentPage(1); // Reset to first page on filter change
   }, [search, activeCategory, guides]);
 
   const handleSubscribe = (e: React.FormEvent) => {
@@ -336,38 +339,78 @@ export const ToolsHub = () => {
                                 <div key={i} className="aspect-[4/3] rounded-[2.5rem] bg-white/5 animate-pulse" />
                              ))
                         ) : filteredGuides.length > 0 ? (
-                            filteredGuides.map((guide) => (
-                                <Link 
-                                    key={guide.id} 
-                                    to={`/guia/${guide.slug}`} 
-                                    className="group flex flex-col"
-                                >
-                                    <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden mb-6 border border-white/5 relative bg-white/5">
-                                        {guide.image_url ? (
-                                            <img 
-                                                src={guide.image_url} 
-                                                alt={guide.title} 
-                                                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
-                                            />
-                                        ) : (
-                                            <div className="w-full h-full flex items-center justify-center opacity-10">
-                                                <BookOpen size={48} />
+                            <>
+                                {filteredGuides
+                                    .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+                                    .map((guide) => (
+                                        <Link 
+                                            key={guide.id} 
+                                            to={`/guia/${guide.slug}`} 
+                                            className="group flex flex-col"
+                                        >
+                                            <div className="aspect-[16/10] rounded-[2.5rem] overflow-hidden mb-6 border border-white/5 relative bg-white/5">
+                                                {guide.image_url ? (
+                                                    <img 
+                                                        src={guide.image_url} 
+                                                        alt={guide.title} 
+                                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+                                                    />
+                                                ) : (
+                                                    <div className="w-full h-full flex items-center justify-center opacity-10">
+                                                        <BookOpen size={48} />
+                                                    </div>
+                                                )}
+                                                <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                                <div className="absolute bottom-6 left-6 px-4 py-1 bg-primary text-dark rounded-full text-[10px] font-bold uppercase tracking-widest translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                                                    Ler Artigo
+                                                </div>
                                             </div>
-                                        )}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                                        <div className="absolute bottom-6 left-6 px-4 py-1 bg-primary text-dark rounded-full text-[10px] font-bold uppercase tracking-widest translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
-                                            Ler Artigo
-                                        </div>
+                                            <h4 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight line-clamp-2 italic">
+                                                {guide.title}
+                                            </h4>
+                                            <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-white/20">
+                                                <span className="flex items-center gap-1.5"><Clock size={12} /> 4-6 min</span>
+                                                <span className="flex items-center gap-1.5"><Flame size={12} className="text-orange-500" /> Especialista</span>
+                                            </div>
+                                        </Link>
+                                    ))
+                                }
+                                
+                                {/* Pagination Controls */}
+                                {filteredGuides.length > itemsPerPage && (
+                                    <div className="sm:col-span-2 flex justify-center items-center gap-2 mt-12">
+                                        <button 
+                                            onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+                                            disabled={currentPage === 1}
+                                            className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary/30 disabled:opacity-30 disabled:hover:text-white/40 disabled:hover:border-white/10 transition-all"
+                                        >
+                                            <ChevronRight className="rotate-180" size={18} />
+                                        </button>
+                                        
+                                        {[...Array(Math.ceil(filteredGuides.length / itemsPerPage))].map((_, i) => (
+                                            <button
+                                                key={i}
+                                                onClick={() => setCurrentPage(i + 1)}
+                                                className={`w-10 h-10 rounded-xl font-bold text-xs transition-all ${
+                                                    currentPage === i + 1 
+                                                    ? 'bg-primary text-dark' 
+                                                    : 'bg-white/5 border border-white/10 text-white/40 hover:bg-white/10'
+                                                }`}
+                                            >
+                                                {i + 1}
+                                            </button>
+                                        ))}
+
+                                        <button 
+                                            onClick={() => setCurrentPage(prev => Math.min(Math.ceil(filteredGuides.length / itemsPerPage), prev + 1))}
+                                            disabled={currentPage === Math.ceil(filteredGuides.length / itemsPerPage)}
+                                            className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-white/40 hover:text-primary hover:border-primary/30 disabled:opacity-30 disabled:hover:text-white/40 disabled:hover:border-white/10 transition-all"
+                                        >
+                                            <ChevronRight size={18} />
+                                        </button>
                                     </div>
-                                    <h4 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors leading-tight line-clamp-2 italic">
-                                        {guide.title}
-                                    </h4>
-                                    <div className="flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-white/20">
-                                        <span className="flex items-center gap-1.5"><Clock size={12} /> 4-6 min</span>
-                                        <span className="flex items-center gap-1.5"><Flame size={12} className="text-orange-500" /> Especialista</span>
-                                    </div>
-                                </Link>
-                            ))
+                                )}
+                            </>
                         ) : (
                             <div className="sm:col-span-2 py-20 text-center rounded-[3rem] border border-white/5 border-dashed">
                                 <Search size={48} className="mx-auto mb-4 text-white/10" />
