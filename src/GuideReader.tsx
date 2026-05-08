@@ -134,11 +134,11 @@ export const GuideReader = () => {
         className="fixed top-[71px] left-0 h-0.5 bg-primary z-50 shadow-[0_0_10px_rgba(205,255,0,0.5)]" 
       />
 
-      <main className="pt-32 px-6">
+      <main className="pt-32 px-6 overflow-x-hidden">
         <div className="max-w-6xl mx-auto grid lg:grid-cols-[1fr_320px] gap-16">
             
             {/* ARTICLE CONTENT */}
-            <article>
+            <article className="min-w-0 overflow-hidden">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
                     {/* Header Info */}
                     <div className="mb-10 text-center lg:text-left">
@@ -165,7 +165,7 @@ export const GuideReader = () => {
                         </div>
                     )}
                     
-                    <div className="prose prose-invert prose-p:text-white/60 prose-strong:text-white/90 prose-headings:font-display prose-headings:font-bold prose-lg max-w-none prose-a:text-primary prose-blockquote:border-primary prose-blockquote:bg-white/[0.02]">
+                    <div className="prose prose-invert prose-p:text-white/60 prose-strong:text-white/90 prose-headings:font-display prose-headings:font-bold prose-lg max-w-none prose-a:text-primary prose-blockquote:border-primary prose-blockquote:bg-white/[0.02] overflow-x-hidden">
                         <ReactMarkdown
                             rehypePlugins={[rehypeRaw]}
                             components={{
@@ -181,7 +181,26 @@ export const GuideReader = () => {
                                         <Zap className="absolute -top-4 -right-4 w-24 h-24 text-primary/[0.03] -rotate-12" />
                                         <div className="relative z-10">{props.children}</div>
                                     </blockquote>
-                                )
+                                ),
+                                // Smart code block: if content looks like HTML, render it. Otherwise show as code.
+                                code: ({node, className, children, ...props}: any) => {
+                                    const content = String(children).trim();
+                                    const isHtml = /^\s*<[a-zA-Z][^>]*>/.test(content);
+                                    if (isHtml) {
+                                        return <div dangerouslySetInnerHTML={{ __html: content }} className="my-6 w-full overflow-x-hidden" />;
+                                    }
+                                    return <code className={`${className || ''} bg-white/5 rounded px-1.5 py-0.5 text-primary font-mono text-sm`} {...props}>{children}</code>;
+                                },
+                                pre: ({node, children, ...props}: any) => {
+                                    // Check if child code block contains HTML
+                                    const codeChild = (children as any)?.props;
+                                    const content = String(codeChild?.children || '').trim();
+                                    const isHtml = /^\s*<[a-zA-Z][^>]*>/.test(content);
+                                    if (isHtml) {
+                                        return <div dangerouslySetInnerHTML={{ __html: content }} className="my-6 w-full overflow-x-hidden" />;
+                                    }
+                                    return <pre {...props} className="bg-white/5 rounded-2xl p-6 overflow-x-auto text-sm font-mono my-8 border border-white/10">{children}</pre>;
+                                }
                             }}
                         >
                             {guide.content}
