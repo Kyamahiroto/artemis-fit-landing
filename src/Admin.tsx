@@ -519,7 +519,7 @@ export const Admin = () => {
                   <div className="flex gap-4 pt-4">
                     <button 
                       onClick={handleSaveGuide}
-                      disabled={loading || !newGuideTitle || !newGuideContent}
+                      disabled={loading || !newGuideTitle}
                       className="px-8 py-3 bg-primary text-dark rounded-xl font-bold flex items-center gap-2 hover:brightness-110 transition disabled:opacity-50"
                     >
                       <Save size={18} /> {loading ? 'Salvando...' : 'Salvar Alterações'}
