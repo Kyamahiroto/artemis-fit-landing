@@ -287,7 +287,7 @@ export const GuideReader = () => {
                                 <h4 className="font-bold text-xl mb-2 italic">A ciência evolui. Não treine no passado.</h4>
                                 <p className="text-white/40 text-sm max-w-md">Este conteúdo foi gerado com base em literatura científica de performance feminina. Domine seu ciclo hoje.</p>
                             </div>
-                            <a href="https://app.artemisfit.online" className="flex items-center gap-3 px-8 py-4 bg-primary text-dark rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_10px_30px_-5px_rgba(205,255,0,0.4)]">
+                            <a href="https://app.artemisfit.online" className="flex items-center gap-3 px-8 py-4 bg-primary text-black rounded-full font-bold text-sm hover:scale-105 transition-transform shadow-[0_10px_30px_-5px_rgba(205,255,0,0.4)]">
                                 <Zap size={18} /> Ativar IA de Treino
                             </a>
                         </div>
