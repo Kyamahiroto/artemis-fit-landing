@@ -108,23 +108,31 @@ export const ToolsHub = () => {
     
     // Filter by Category
     if (activeCategory !== 'all') {
-      const active = normalize(activeCategory);
+      const activeId = activeCategory.toLowerCase();
       result = result.filter(g => {
-         const cat = normalize(g.category || '');
+         const cat = (g.category || '').toLowerCase();
+         const title = normalize(g.title);
          
-         // Client-side heuristics if category isn't set in DB
+         // Direct match or partial match in category field
+         if (cat.includes(activeId) || activeId.includes(cat)) return true;
+
+         // Mapping-based match for consistency with Admin categories
+         if (activeId === 'treino' && cat.includes('força')) return true;
+         if (activeId === 'nutricao' && (cat.includes('proteína') || cat.includes('dieta'))) return true;
+         if (activeId === 'saude' && cat.includes('hormonal')) return true;
+         if (activeId === 'recuperacao' && (cat.includes('sono') || cat.includes('mentalidade'))) return true;
+         if (activeId === 'ciclo' && (cat.includes('menstrual'))) return true;
+         
+         // Heuristics if no category is set
          if (!g.category) {
-            const title = normalize(g.title);
-            if (active === 'treino' && title.includes('treino')) return true;
-            if (active === 'ciclo' && (title.includes('ciclo') || title.includes('fase') || title.includes('menstrual'))) return true;
-            if (active === 'nutricao' && (title.includes('proteina') || title.includes('nutricao') || title.includes('comer'))) return true;
-            if (active === 'recuperacao' && (title.includes('sono') || title.includes('overtraining') || title.includes('descanso'))) return true;
-            if (active === 'saude' && (title.includes('hormonio') || title.includes('corpo') || title.includes('sinais'))) return true;
-            return false;
+            if (activeId === 'treino' && title.includes('treino')) return true;
+            if (activeId === 'ciclo' && (title.includes('ciclo') || title.includes('fase') || title.includes('menstrual'))) return true;
+            if (activeId === 'nutricao' && (title.includes('proteina') || title.includes('nutricao') || title.includes('comer'))) return true;
+            if (activeId === 'recuperacao' && (title.includes('sono') || title.includes('descanso') || title.includes('mentalidade'))) return true;
+            if (activeId === 'saude' && (title.includes('hormonio') || title.includes('saude') || title.includes('corpo'))) return true;
          }
          
-         // Match if category string contains the active filter string or vice versa
-         return cat.includes(active) || active.includes(cat);
+         return false;
       });
     }
     
