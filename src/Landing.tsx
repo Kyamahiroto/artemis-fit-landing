@@ -940,8 +940,8 @@ export default function Landing() {
   return (
     <div className="bg-dark min-h-screen selection:bg-primary selection:text-dark">
       <SEOHead
-          title="Artemis Fit App — App de Treino Feminino com IA e Ciclo Menstrual"
-          description="Treine de acordo com seu ciclo menstrual. IA que adapta seus treinos à sua biologia. Experimente grátis por 7 dias."
+          title="Artemis Fit App — O Melhor Aplicativo de Treino Feminino com IA"
+          description="O Artemis Fit App é o aplicativo de treino feminino definitivo que adapta seus exercícios ao ciclo menstrual. Melhore sua performance com IA hoje."
           canonicalUrl="https://artemisfit.online/"
           schema={{
             "@context": "https://schema.org",
