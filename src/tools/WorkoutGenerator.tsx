@@ -212,92 +212,122 @@ Gere o seu em: artemisfit.online
                 {`
                 @page {
                     margin: 0;
-                    size: auto;
+                    size: A4;
                 }
                 @media print {
+                    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
                     nav, .no-print, button, a { display: none !important; }
                     body { 
-                        background: white !important; 
-                        color: black !important; 
+                        background: #0a0a0a !important; 
+                        color: #ffffff !important; 
                         margin: 0 !important;
                         padding: 0 !important;
+                        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
                     }
                     .print-only { display: block !important; }
                     .print-header {
                         display: flex !important;
                         align-items: center !important;
                         justify-content: space-between !important;
-                        padding: 40px 60px !important;
-                        background: #000 !important;
+                        padding: 32px 48px !important;
+                        background: #111111 !important;
+                        border-bottom: 1px solid rgba(205,255,0,0.3) !important;
                         color: white !important;
-                        margin-bottom: 30px !important;
+                        margin-bottom: 32px !important;
                     }
                     .print-logo-container {
                         display: flex !important;
                         align-items: center !important;
-                        gap: 15px !important;
+                        gap: 12px !important;
                     }
                     .brand-name {
-                        font-size: 24px !important;
+                        font-size: 20px !important;
                         font-weight: 800 !important;
                         text-transform: uppercase !important;
-                        letter-spacing: 2px !important;
+                        letter-spacing: 3px !important;
+                        color: #ffffff !important;
+                    }
+                    .brand-accent {
+                        color: #CDFF00 !important;
+                        font-style: italic !important;
                     }
                     .brand-tagline {
-                        font-size: 10px !important;
-                        opacity: 0.6 !important;
+                        font-size: 9px !important;
+                        color: rgba(255,255,255,0.4) !important;
                         text-transform: uppercase !important;
-                        letter-spacing: 1px !important;
+                        letter-spacing: 2px !important;
+                        margin-top: 2px !important;
+                    }
+                    .print-date-badge {
+                        text-align: right !important;
+                    }
+                    .print-date-label {
+                        font-size: 9px !important;
+                        color: rgba(255,255,255,0.3) !important;
+                        text-transform: uppercase !important;
+                        letter-spacing: 1.5px !important;
+                        font-weight: 700 !important;
+                    }
+                    .print-date-value {
+                        font-size: 13px !important;
+                        font-weight: 700 !important;
+                        color: #CDFF00 !important;
+                        margin-top: 2px !important;
                     }
                     .print-container { 
-                        margin: 0 60px !important;
-                        padding: 30px !important; 
-                        border: 1px solid #000 !important; 
-                        border-radius: 20px !important; 
-                        background: white !important;
-                        margin-bottom: 20px !important;
+                        margin: 0 48px 16px 48px !important;
+                        padding: 24px !important; 
+                        border: 1px solid rgba(255,255,255,0.1) !important; 
+                        border-radius: 16px !important; 
+                        background: #141414 !important;
                     }
                     .print-bg-fix { 
-                        background-color: #f8f8f8 !important; 
-                        border: 1px solid #eee !important; 
-                        padding: 20px !important; 
-                        color: black !important;
-                        border-radius: 15px !important;
+                        background: rgba(255,255,255,0.04) !important; 
+                        border: 1px solid rgba(255,255,255,0.08) !important; 
+                        padding: 12px 16px !important; 
+                        color: rgba(255,255,255,0.8) !important;
+                        border-radius: 10px !important;
                     }
                     .workout-title {
-                        font-size: 28px !important;
+                        font-size: 26px !important;
                         font-weight: 800 !important;
-                        margin-bottom: 10px !important;
-                        color: #000 !important;
+                        margin-bottom: 8px !important;
+                        color: #ffffff !important;
+                        font-style: italic !important;
                     }
                     .workout-meta {
                         display: flex !important;
-                        gap: 15px !important;
-                        font-size: 12px !important;
+                        gap: 12px !important;
+                        font-size: 11px !important;
                         font-weight: 600 !important;
-                        color: #666 !important;
-                        margin-bottom: 20px !important;
+                        color: rgba(255,255,255,0.4) !important;
+                        margin-bottom: 16px !important;
                     }
                     .section-label {
-                        font-size: 11px !important;
+                        font-size: 10px !important;
                         font-weight: 800 !important;
                         text-transform: uppercase !important;
-                        letter-spacing: 1.5px !important;
-                        color: #999 !important;
-                        margin-bottom: 15px !important;
+                        letter-spacing: 2px !important;
+                        color: #CDFF00 !important;
+                        margin-bottom: 12px !important;
+                        padding-bottom: 8px !important;
+                        border-bottom: 1px solid rgba(205,255,0,0.15) !important;
                     }
                     .print-footer {
                         display: block !important;
                         position: fixed !important;
                         bottom: 0 !important;
                         width: 100% !important;
-                        padding: 30px 60px !important;
-                        border-top: 1px solid #eee !important;
-                        font-size: 10px !important;
-                        color: #999 !important;
+                        padding: 20px 48px !important;
+                        border-top: 1px solid rgba(255,255,255,0.07) !important;
+                        font-size: 9px !important;
+                        color: rgba(255,255,255,0.25) !important;
                         text-align: center !important;
+                        background: #0a0a0a !important;
                     }
-                    .text-primary { color: #ccff00 !important; -webkit-print-color-adjust: exact; }
+                    .text-white\\/70 { color: rgba(255,255,255,0.7) !important; }
+                    .text-white\\/30 { color: rgba(255,255,255,0.3) !important; }
+                    .text-primary { color: #CDFF00 !important; }
                 }
                 `}
             </style>
@@ -485,15 +515,15 @@ Gere o seu em: artemisfit.online
 
                                 <div className="hidden print-only print-header">
                                     <div className="print-logo-container">
-                                        <img src="/logo.png" alt="Artemis Fit App" className="w-12 h-12" />
+                                        <img src="/logo.png" alt="Artemis Fit App" className="w-10 h-10" />
                                         <div>
-                                            <div className="brand-name">Artemis <span className="text-primary italic">Fit App</span></div>
+                                            <div className="brand-name">Artemis <span className="brand-accent">Fit App</span></div>
                                             <div className="brand-tagline">Inteligência Fisionômica Feminina</div>
                                         </div>
                                     </div>
-                                    <div className="text-right">
-                                        <div className="text-[10px] uppercase font-bold tracking-widest opacity-60">Treino Gerado em</div>
-                                        <div className="text-sm font-bold">{new Date().toLocaleDateString('pt-BR')}</div>
+                                    <div className="print-date-badge">
+                                        <div className="print-date-label">Treino gerado em</div>
+                                        <div className="print-date-value">{new Date().toLocaleDateString('pt-BR')}</div>
                                     </div>
                                 </div>
 

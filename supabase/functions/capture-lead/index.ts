@@ -100,9 +100,12 @@ Deno.serve(async (req: Request) => {
           contextIcon = "🍳";
           contextText = "Dicas de pré e pós treino para seu perfil";
           guideSlug = "guia-proteina-musculo-feminino";
+        } else {
+          // Default: ciclo guide as fallback
+          guideSlug = "guia-treino-feminino-ciclo";
         }
 
-        const guideUrl = `https://artemisfit.online/guia/artigo/${guideSlug}`;
+        const guideUrl = `https://www.artemisfit.online/guia/${guideSlug}`;
 
         const emailHtml = `
 <!DOCTYPE html>
