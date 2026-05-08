@@ -11,7 +11,7 @@ interface Guide {
   id: string;
   title: string;
   subtitle?: string;
-  content: string;
+  content?: string;
   image_url?: string;
   created_at: string;
   slug: string;
