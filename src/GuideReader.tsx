@@ -57,6 +57,28 @@ export const GuideReader = () => {
     if (slug) fetchGuideData();
   }, [slug]);
 
+  // Execute any <script> blocks embedded in the guide content
+  // This allows interactive quizzes and onclick handlers to work
+  useEffect(() => {
+    if (!guide?.content) return;
+
+    const injectedScripts: HTMLScriptElement[] = [];
+    const scriptRegex = /<script(?:[^>]*)>([\s\S]*?)<\/script>/gi;
+    let match;
+
+    while ((match = scriptRegex.exec(guide.content)) !== null) {
+      const scriptEl = document.createElement('script');
+      scriptEl.textContent = match[1];
+      document.body.appendChild(scriptEl);
+      injectedScripts.push(scriptEl);
+    }
+
+    return () => {
+      // Clean up injected scripts on unmount
+      injectedScripts.forEach(s => s.remove());
+    };
+  }, [guide]);
+
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
@@ -166,45 +188,49 @@ export const GuideReader = () => {
                     )}
                     
                     <div className="prose prose-invert prose-p:text-white/60 prose-strong:text-white/90 prose-headings:font-display prose-headings:font-bold prose-lg max-w-none prose-a:text-primary prose-blockquote:border-primary prose-blockquote:bg-white/[0.02] overflow-x-hidden">
-                        <ReactMarkdown
-                            rehypePlugins={[rehypeRaw]}
-                            components={{
-                                img: ({node, ...props}) => <img {...props} className="rounded-3xl border border-white/10 my-10 w-full" />,
-                                h2: ({node, ...props}) => <h2 {...props} className="text-3xl md:text-4xl mt-16 mb-8 text-white border-b border-white/5 pb-6 italic" />,
-                                h3: ({node, ...props}) => <h3 {...props} className="text-2xl mt-12 mb-6 text-white/90" />,
-                                p: ({node, ...props}) => <p {...props} className="mb-8 leading-[1.8] text-white/70" />,
-                                ul: ({node, ...props}) => <ul {...props} className="list-disc list-outside ml-6 space-y-3 mb-10 text-white/60" />,
-                                ol: ({node, ...props}) => <ol {...props} className="list-decimal list-outside ml-6 space-y-3 mb-10 text-white/60" />,
-                                li: ({node, ...props}) => <li {...props} className="marker:text-primary pl-4" />,
-                                blockquote: ({node, ...props}) => (
-                                    <blockquote {...props} className="border-l-4 border-primary bg-primary/5 p-8 rounded-2xl italic my-12 relative overflow-hidden">
-                                        <Zap className="absolute -top-4 -right-4 w-24 h-24 text-primary/[0.03] -rotate-12" />
-                                        <div className="relative z-10">{props.children}</div>
-                                    </blockquote>
-                                ),
-                                // Smart code block: if content looks like HTML, render it. Otherwise show as code.
-                                code: ({node, className, children, ...props}: any) => {
-                                    const content = String(children).trim();
-                                    const isHtml = /^\s*<[a-zA-Z][^>]*>/.test(content);
-                                    if (isHtml) {
-                                        return <div dangerouslySetInnerHTML={{ __html: content }} className="my-6 w-full overflow-x-hidden" />;
+                        {/* Pure HTML posts: use dangerouslySetInnerHTML to preserve onclick/scripts */}
+                        {guide.content.trimStart().startsWith('<') ? (
+                            <div dangerouslySetInnerHTML={{ __html: guide.content }} className="w-full overflow-x-hidden" />
+                        ) : (
+                            <ReactMarkdown
+                                rehypePlugins={[rehypeRaw]}
+                                components={{
+                                    img: ({node, ...props}) => <img {...props} className="rounded-3xl border border-white/10 my-10 w-full" />,
+                                    h2: ({node, ...props}) => <h2 {...props} className="text-3xl md:text-4xl mt-16 mb-8 text-white border-b border-white/5 pb-6 italic" />,
+                                    h3: ({node, ...props}) => <h3 {...props} className="text-2xl mt-12 mb-6 text-white/90" />,
+                                    p: ({node, ...props}) => <p {...props} className="mb-8 leading-[1.8] text-white/70" />,
+                                    ul: ({node, ...props}) => <ul {...props} className="list-disc list-outside ml-6 space-y-3 mb-10 text-white/60" />,
+                                    ol: ({node, ...props}) => <ol {...props} className="list-decimal list-outside ml-6 space-y-3 mb-10 text-white/60" />,
+                                    li: ({node, ...props}) => <li {...props} className="marker:text-primary pl-4" />,
+                                    blockquote: ({node, ...props}) => (
+                                        <blockquote {...props} className="border-l-4 border-primary bg-primary/5 p-8 rounded-2xl italic my-12 relative overflow-hidden">
+                                            <Zap className="absolute -top-4 -right-4 w-24 h-24 text-primary/[0.03] -rotate-12" />
+                                            <div className="relative z-10">{props.children}</div>
+                                        </blockquote>
+                                    ),
+                                    // Smart code block: if content looks like HTML, render via dangerouslySetInnerHTML
+                                    code: ({node, className, children, ...props}: any) => {
+                                        const content = String(children).trim();
+                                        const isHtml = /^\s*<[a-zA-Z][^>]*>/.test(content);
+                                        if (isHtml) {
+                                            return <div dangerouslySetInnerHTML={{ __html: content }} className="my-6 w-full overflow-x-hidden" />;
+                                        }
+                                        return <code className={`${className || ''} bg-white/5 rounded px-1.5 py-0.5 text-primary font-mono text-sm`} {...props}>{children}</code>;
+                                    },
+                                    pre: ({node, children, ...props}: any) => {
+                                        const codeChild = (children as any)?.props;
+                                        const content = String(codeChild?.children || '').trim();
+                                        const isHtml = /^\s*<[a-zA-Z][^>]*>/.test(content);
+                                        if (isHtml) {
+                                            return <div dangerouslySetInnerHTML={{ __html: content }} className="my-6 w-full overflow-x-hidden" />;
+                                        }
+                                        return <pre {...props} className="bg-white/5 rounded-2xl p-6 overflow-x-auto text-sm font-mono my-8 border border-white/10">{children}</pre>;
                                     }
-                                    return <code className={`${className || ''} bg-white/5 rounded px-1.5 py-0.5 text-primary font-mono text-sm`} {...props}>{children}</code>;
-                                },
-                                pre: ({node, children, ...props}: any) => {
-                                    // Check if child code block contains HTML
-                                    const codeChild = (children as any)?.props;
-                                    const content = String(codeChild?.children || '').trim();
-                                    const isHtml = /^\s*<[a-zA-Z][^>]*>/.test(content);
-                                    if (isHtml) {
-                                        return <div dangerouslySetInnerHTML={{ __html: content }} className="my-6 w-full overflow-x-hidden" />;
-                                    }
-                                    return <pre {...props} className="bg-white/5 rounded-2xl p-6 overflow-x-auto text-sm font-mono my-8 border border-white/10">{children}</pre>;
-                                }
-                            }}
-                        >
-                            {guide.content}
-                        </ReactMarkdown>
+                                }}
+                            >
+                                {guide.content}
+                            </ReactMarkdown>
+                        )}
                     </div>
 
                     {/* Author / CTA Footer */}
