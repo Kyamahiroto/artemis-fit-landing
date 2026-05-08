@@ -183,7 +183,7 @@ export const Admin = () => {
   };
 
   const handleSaveGuide = async () => {
-    if (!newGuideTitle || !newGuideContent) return;
+    if (!newGuideTitle) return;
     setLoading(true);
     
     let imageUrl = imagePreview || '';
@@ -197,7 +197,7 @@ export const Admin = () => {
     const guideData = { 
       title: newGuideTitle, 
       subtitle: newGuideSubtitle,
-      content: newGuideContent, 
+      content: newGuideContent || '', 
       slug, 
       category: newGuideCategory,
       image_url: imageUrl,
@@ -217,8 +217,10 @@ export const Admin = () => {
     }
       
     if (!result.error) {
+      // Await fetchGuides so the local state is fresh before resetForm re-opens editor
+      await fetchGuides();
       resetForm();
-      fetchGuides();
+      alert('✅ Guia salvo com sucesso!');
     } else {
       alert("Erro ao salvar guia: " + result.error.message);
     }

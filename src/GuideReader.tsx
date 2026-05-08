@@ -189,16 +189,12 @@ export const GuideReader = () => {
                     
                     <div className="prose prose-invert prose-p:text-white/60 prose-strong:text-white/90 prose-headings:font-display prose-headings:font-bold prose-lg max-w-none prose-a:text-primary prose-blockquote:border-primary prose-blockquote:bg-white/[0.02] overflow-x-hidden">
                         {(() => {
-                            // Strip <script> tags for rendering (useEffect handles their execution)
+                            // Strip <script> tags - useEffect handles their execution separately
                             const renderContent = guide.content.replace(/<script[\s\S]*?<\/script>/gi, '');
-                            const isPureHtml = renderContent.trimStart().startsWith('<');
 
-                            if (isPureHtml) {
-                                // Pure HTML post: dangerouslySetInnerHTML preserves onclick attributes
-                                return <div dangerouslySetInnerHTML={{ __html: renderContent }} className="w-full overflow-x-hidden" />;
-                            }
-
-                            // Markdown post: use ReactMarkdown with rehype-raw for inline HTML support
+                            // Always use ReactMarkdown: handles both markdown AND raw HTML (via rehype-raw)
+                            // onclick string attributes work because React passes unknown lowercase
+                            // props through to the DOM via setAttribute
                             return (
                                 <ReactMarkdown
                                     rehypePlugins={[rehypeRaw]}
@@ -216,6 +212,15 @@ export const GuideReader = () => {
                                                 <div className="relative z-10">{props.children}</div>
                                             </blockquote>
                                         ),
+                                        table: ({node, ...props}) => (
+                                            <div className="overflow-x-auto my-10">
+                                                <table {...props} className="w-full border-collapse text-sm" />
+                                            </div>
+                                        ),
+                                        thead: ({node, ...props}) => <thead {...props} className="bg-primary/10" />,
+                                        th: ({node, ...props}) => <th {...props} className="border border-white/20 px-4 py-3 text-left font-bold text-primary uppercase text-xs tracking-widest" />,
+                                        td: ({node, ...props}) => <td {...props} className="border border-white/10 px-4 py-3 text-white/70" />,
+                                        tr: ({node, ...props}) => <tr {...props} className="hover:bg-white/[0.03] transition-colors" />,
                                         code: ({node, className, children, ...props}: any) => {
                                             const content = String(children).replace(/<script[\s\S]*?<\/script>/gi, '').trim();
                                             const isHtml = /^\s*<[a-zA-Z][^>]*>/.test(content);
