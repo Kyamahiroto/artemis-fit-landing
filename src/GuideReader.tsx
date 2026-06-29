@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { supabase } from './supabaseClient';
+import { staticGuides } from './data/staticGuides';
 import { ArrowLeft, BookOpen, Calendar, Clock, Share2, Bookmark, CheckCircle2, Zap, ArrowRight, Mail, Gift, Flame } from 'lucide-react';
 import { SEOHead } from './components/SEOHead';
 import { motion, AnimatePresence } from 'motion/react';
@@ -28,30 +29,58 @@ export const GuideReader = () => {
   useEffect(() => {
     const fetchGuideData = async () => {
       setLoading(true);
-      
-      // Fetch current guide
-      const { data: current, error } = await supabase
-        .from('guides')
-        .select('*')
-        .eq('slug', slug)
-        .eq('is_published', true)
-        .single();
-        
-      if (!error && current) {
-        setGuide(current);
-        
-        // Fetch recent guides (excluding current)
-        const { data: recents } = await supabase
+      try {
+        // Fetch current guide
+        const { data: current, error } = await supabase
           .from('guides')
-          .select('id, title, slug, image_url, created_at')
+          .select('*')
+          .eq('slug', slug)
           .eq('is_published', true)
-          .neq('id', current.id)
-          .order('created_at', { ascending: false })
-          .limit(4);
+          .single();
           
-        if (recents) setRecentGuides(recents);
+        if (!error && current) {
+          setGuide(current);
+          
+          // Fetch recent guides (excluding current)
+          const { data: recents } = await supabase
+            .from('guides')
+            .select('id, title, slug, image_url, created_at')
+            .eq('is_published', true)
+            .neq('id', current.id)
+            .order('created_at', { ascending: false })
+            .limit(4);
+            
+          if (recents && recents.length > 0) {
+            setRecentGuides(recents);
+          } else {
+            const fallbackRecents = staticGuides.filter(g => g.slug !== slug).slice(0, 4);
+            setRecentGuides(fallbackRecents);
+          }
+        } else {
+          // Attempt local/static fallback search
+          console.warn('Guide fetch from Supabase failed or returned empty. Checking staticGuides fallback.', error);
+          const localGuide = staticGuides.find(g => g.slug === slug);
+          if (localGuide) {
+            setGuide(localGuide);
+            const fallbackRecents = staticGuides.filter(g => g.slug !== slug).slice(0, 4);
+            setRecentGuides(fallbackRecents);
+          } else {
+            setGuide(null);
+          }
+        }
+      } catch (err) {
+        console.error('Failed to fetch guide, checking staticGuides fallback.', err);
+        const localGuide = staticGuides.find(g => g.slug === slug);
+        if (localGuide) {
+          setGuide(localGuide);
+          const fallbackRecents = staticGuides.filter(g => g.slug !== slug).slice(0, 4);
+          setRecentGuides(fallbackRecents);
+        } else {
+          setGuide(null);
+        }
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
     
     if (slug) fetchGuideData();

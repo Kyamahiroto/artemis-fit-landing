@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { supabase } from './supabaseClient';
+import { staticGuides } from './data/staticGuides';
 import { 
   Zap, ArrowRight, BookOpen, Calculator, Brain, 
   Sparkles, Flame, Clock, Mail, CheckCircle2, 
@@ -77,17 +78,28 @@ export const ToolsHub = () => {
 
   useEffect(() => {
     const fetchGuides = async () => {
-      const { data, error } = await supabase
-        .from('guides')
-        .select('id, title, subtitle, slug, image_url, created_at, category')
-        .eq('is_published', true)
-        .order('created_at', { ascending: false });
-        
-      if (!error && data) {
-        setGuides(data);
-        setFilteredGuides(data);
+      try {
+        const { data, error } = await supabase
+          .from('guides')
+          .select('id, title, subtitle, slug, image_url, created_at, category')
+          .eq('is_published', true)
+          .order('created_at', { ascending: false });
+          
+        if (!error && data && data.length > 0) {
+          setGuides(data);
+          setFilteredGuides(data);
+        } else {
+          console.warn('Supabase guides returned empty or failed, using static fallback.', error);
+          setGuides(staticGuides);
+          setFilteredGuides(staticGuides);
+        }
+      } catch (err) {
+        console.error('Failed to fetch guides, using static fallback.', err);
+        setGuides(staticGuides);
+        setFilteredGuides(staticGuides);
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
     fetchGuides();
   }, []);
@@ -112,18 +124,18 @@ export const ToolsHub = () => {
     if (activeCategory !== 'all') {
       const activeId = activeCategory.toLowerCase();
       result = result.filter(g => {
-         const cat = (g.category || '').toLowerCase();
+         const cat = normalize(g.category || '');
          const title = normalize(g.title);
          
          // Direct match or partial match in category field
          if (cat.includes(activeId) || activeId.includes(cat)) return true;
 
          // Mapping-based match for consistency with Admin categories
-         if (activeId === 'treino' && cat.includes('força')) return true;
-         if (activeId === 'nutricao' && (cat.includes('proteína') || cat.includes('dieta'))) return true;
-         if (activeId === 'saude' && cat.includes('hormonal')) return true;
-         if (activeId === 'recuperacao' && (cat.includes('sono') || cat.includes('mentalidade'))) return true;
-         if (activeId === 'ciclo' && (cat.includes('menstrual'))) return true;
+         if (activeId === 'treino' && cat.includes('forca')) return true;
+         if (activeId === 'nutricao' && (cat.includes('proteina') || cat.includes('dieta'))) return true;
+         if (activeId === 'saude' && (cat.includes('hormonal') || cat.includes('hormonio'))) return true;
+         if (activeId === 'recuperacao' && (cat.includes('sono') || cat.includes('mentalidade') || cat.includes('recuperacao'))) return true;
+         if (activeId === 'ciclo' && cat.includes('menstrual')) return true;
          
          // Heuristics if no category is set
          if (!g.category) {

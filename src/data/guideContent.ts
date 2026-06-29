@@ -9,7 +9,7 @@ export interface CyclePhaseInfo {
   color: string;
   colorBg: string;
   emoji: string;
-  hormones: { name: string; level: 'baixo' | 'subindo' | 'alto' | 'caindo' };
+  hormones: { name: string; level: 'baixo' | 'subindo' | 'alto' | 'caindo' }[];
   training: { title: string; tips: string[] };
   nutrition: { title: string; tips: string[] };
   sleep: { title: string; tip: string };
